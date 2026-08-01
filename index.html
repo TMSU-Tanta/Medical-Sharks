@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medical Sharks | المنصة الرسمية لمشاريع طب طنطا</title>
+    
+    <!-- إضافة أيقونة التاب (Favicon) لمنع المتصفح من التحميل المستمر -->
+    <link rel="icon" type="image/png" href="https://github.com/alialshorbagyX/medical-sharks/blob/main/%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF.png?raw=true">
+
     <!-- Google Fonts: Cairo for Headings, Tajawal for Body -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -24,10 +28,10 @@
 
         /* ===== Cinematic Dark Mode ===== */
         body.dark-mode {
-            --primary: #f59e0b; /* Amber/Gold as primary for dark mode */
+            --primary: #f59e0b; 
             --secondary: #d97706;
-            --accent: #3b82f6; /* Soft blue accent */
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /* Midnight Blue */
+            --accent: #3b82f6; 
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
             --glass-bg: rgba(15, 23, 42, 0.75);
             --glass-border: rgba(255, 255, 255, 0.08);
             --text-dark: #f8fafc;
@@ -82,9 +86,11 @@
         
         .nav-title { font-family: 'Cairo', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--primary); letter-spacing: 1px; flex-grow: 1; text-align: center; }
         
+        /* Modern Theme Toggle */
         .theme-toggle {
-            background: transparent; border: none; font-size: 1.5rem;
-            cursor: pointer; color: var(--text-dark); transition: 0.3s;
+            background: transparent; border: none;
+            cursor: pointer; color: var(--text-dark); 
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex; align-items: center; justify-content: center;
             width: 40px; height: 40px; border-radius: 50%;
         }
@@ -117,7 +123,6 @@
         /* ===== Brands Directory ===== */
         .directory-container { max-width: 1300px; margin: 0 auto; padding: 0 20px 100px; }
         
-        /* Spotlight Section (Brand of the Month) */
         .spotlight-section { margin-bottom: 60px; }
         .spotlight-title { font-family: 'Cairo', sans-serif; color: var(--primary); text-align: center; margin-bottom: 25px; font-size: 2.2rem; display: flex; justify-content: center; align-items: center; gap: 10px; font-weight: 900; }
         
@@ -221,6 +226,31 @@
         @keyframes spin { to { transform: rotate(360deg); } }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* =========================================================
+           ===== Mobile & Responsive Adjustments ===== 
+           ========================================================= */
+        @media (max-width: 768px) {
+            .navbar { flex-wrap: wrap; padding: 12px 15px; gap: 10px; }
+            .nav-title { order: 3; width: 100%; font-size: 1.4rem; margin-top: 2px; }
+            .nav-logos { gap: 8px; }
+            .nav-logo-wrapper { width: 35px; height: 35px; }
+            .theme-toggle { width: 35px; height: 35px; }
+            .theme-toggle svg { width: 20px; height: 20px; }
+            .hero { padding: 60px 15px 50px; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .hero-btns { flex-direction: column; width: 100%; padding: 0 20px; }
+            .btn { width: 100%; }
+            .modal-header { height: 200px; }
+            .modal-logo { width: 90px; height: 90px; margin-top: -45px; border-width: 3px; }
+            .modal-header-flex { flex-direction: column; align-items: center; text-align: center; gap: 15px; margin-bottom: 20px; }
+            .modal-title { justify-content: center; font-size: 1.8rem; }
+            .modal-body { padding: 0 20px 30px; margin-top: 0; }
+            .brands-grid { grid-template-columns: 1fr; }
+            .search-input { font-size: 1rem; padding: 15px 20px; }
+            .tag-btn { font-size: 0.9rem; padding: 6px 18px; }
+        }
     </style>
 </head>
 <body>
@@ -228,16 +258,30 @@
     <div class="noise-overlay"></div>
 
     <nav class="navbar">
+        <!-- الجزء اليمين -->
         <div class="nav-logos">
-            <div class="nav-logo-wrapper">
-                <img src="https://github.com/alialshorbagyX/medical-sharks/blob/main/%D9%83%D9%84%D9%8A%D9%87.jpg?raw=true" alt="شعار الكلية" class="logo-img">
+            <div class="nav-logo-wrapper" title="شعار الكلية">
+                <img src="https://drive.google.com/file/d/18ntxbXg3NmvBSwBPnuCHIRkaUzS_gYtu/view?usp=drive_link" alt="شعار الكلية" class="logo-img">
             </div>
-            <div class="nav-logo-wrapper">
-                <img src="https://github.com/alialshorbagyX/medical-sharks/blob/main/%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF.png?raw=true" alt="شعار الاتحاد" class="logo-img">
+            <div class="nav-logo-wrapper" title="شعار الاتحاد">
+                <img src="https://drive.google.com/file/d/1XPTpqy_pgQpZmfm6hmWDMemB0jHKy4uS/view?usp=drive_link" alt="شعار الاتحاد" class="logo-img">
             </div>
         </div>
+
+        <!-- الجزء اللي في النص -->
         <div class="nav-title">Medical Sharks</div>
-        <button class="theme-toggle" id="themeToggle" title="تبديل الوضع">🌙</button>
+
+        <!-- الجزء الشمال -->
+        <div class="nav-logos">
+            <div class="nav-logo-wrapper" title="أسرة طلاب من أجل مصر">
+                <img src="https://drive.google.com/file/d/1_1iDIuogVg8Ur-RRBTnhx-2YrqRtbW5S/view?usp=drive_link" alt="طلاب من أجل مصر" class="logo-img">
+            </div>
+            <div class="nav-logo-wrapper" title="اللجنة الاجتماعية">
+                <img src="https://drive.google.com/file/d/13iby6kkgw6QTBoQeF568C7S0utmEFKUF/view?usp=drive_link" alt="اللجنة الاجتماعية" class="logo-img">
+            </div>
+            <!-- زرار الدارك مود -->
+            <button class="theme-toggle" id="themeToggle" title="تبديل الوضع"></button>
+        </div>
     </nav>
 
     <section class="hero reveal active">
@@ -246,7 +290,8 @@
             <p>دليل شامل يسلط الضوء على العلامات التجارية والمبادرات الخاصة بطلاب كلية الطب بجامعة طنطا، لتعزيز التواصل ودعم ريادة الأعمال الطلابية داخل الحرم الجامعي.</p>
             <div class="hero-btns">
                 <a href="#directory" class="btn btn-primary" id="exploreBtn">تصفح الدليل</a>
-                <a href="https://forms.gle/AfWX4H6XoUfS6ZBF6" target="_blank" class="btn btn-outline">تسجيل مشروع جديد</a>
+                <!-- لينك فورم التسجيل هنا -->
+                <a href="https://forms.google.com/" target="_blank" class="btn btn-outline">تسجيل مشروع جديد</a>
             </div>
         </div>
     </section>
@@ -256,13 +301,8 @@
         <input type="text" id="searchInput" class="search-input" placeholder="ابحث عن اسم المشروع، التصنيف، أو الطالب المالك...">
     </div>
     
-    <div class="tags-container reveal" id="filterTags">
-        <button class="tag-btn active" data-filter="all">عرض الكل</button>
-        <button class="tag-btn" data-filter="مأكولات">مأكولات ومشروبات</button>
-        <button class="tag-btn" data-filter="مشغولات">مشغولات يدوية</button>
-        <button class="tag-btn" data-filter="ملابس">أزياء وملابس</button>
-        <button class="tag-btn" data-filter="خدمات">خدمات طبية وتعليمية</button>
-    </div>
+    <!-- حاوية الفلاتر (فاضية عشان الجافا سكريبت هيملطها بالـ Top 4) -->
+    <div class="tags-container reveal" id="filterTags"></div>
 
     <!-- Brands Directory -->
     <div class="directory-container">
@@ -284,10 +324,11 @@
         <div class="footer-content">
             <div class="footer-logo">Medical Sharks</div>
             <p class="footer-desc">مبادرة طلابية تهدف إلى بناء مجتمع داعم للمواهب والمشاريع التجارية لطلاب كلية الطب بجامعة طنطا، تحت إشراف اتحاد الطلاب.</p>
-            <a href="https://forms.gle/AfWX4H6XoUfS6ZBF6" target="_blank" class="btn btn-primary" style="margin-bottom: 40px; padding: 10px 30px; font-size: 1rem;">انضم إلى المنصة الآن</a>
+            <!-- لينك فورم التسجيل التاني هنا -->
+            <a href="https://forms.google.com/" target="_blank" class="btn btn-primary" style="margin-bottom: 40px; padding: 10px 30px; font-size: 1rem;">انضم إلى المنصة الآن</a>
             
             <div class="footer-bottom">
-                <p>تم التصميم والتطوير بواسطة <span style="color:var(--primary); font-weight:700;">فريق Medical Sharks</span> - اتحاد طلاب طب طنطا</p>
+                <p>تم التصميم والتطوير بواسطة <span style="color:var(--primary); font-weight:700;">فريق Medical Sharks</span> -   اتحاد طلاب طب طنطا</p>
             </div>
         </div>
     </footer>
@@ -297,11 +338,12 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal(event, true)">&times;</span>
             <div class="modal-header">
-                <img src="" alt="Cover" class="modal-cover" id="modalCover" onerror="this.src='https://via.placeholder.com/800x400/0f172a/ffffff?text=Image+Not+Found'">
+                <!-- Using 1x1 transparent pixel to prevent browser hanging on empty src -->
+                <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Cover" class="modal-cover" id="modalCover" onerror="this.src='https://via.placeholder.com/800x400/0f172a/ffffff?text=Image+Not+Found'">
             </div>
             <div class="modal-body">
                 <div class="modal-header-flex">
-                    <img src="" alt="Logo" class="modal-logo" id="modalLogo" onerror="this.src='https://via.placeholder.com/150/ffffff/0b5b9c?text=Logo'">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Logo" class="modal-logo" id="modalLogo" onerror="this.src='https://via.placeholder.com/150/ffffff/0b5b9c?text=Logo'">
                     <div class="modal-title-wrapper">
                         <h2 class="modal-title" id="modalTitle">اسم المشروع</h2>
                         <span class="modal-category" id="modalCategory">التصنيف</span>
@@ -337,7 +379,7 @@
     <!-- Lightbox for Full Screen Images -->
     <div id="imageLightbox" class="lightbox-overlay" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
-        <img id="lightboxImg" class="lightbox-img" src="">
+        <img id="lightboxImg" class="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
     </div>
 
     <script>
@@ -358,7 +400,6 @@
             initTheme();
             initParallax();
             fetchBrands();
-            setupFilters();
             
             document.getElementById('searchInput').addEventListener('input', applyFilters);
             window.addEventListener("scroll", revealOnScroll);
@@ -381,7 +422,7 @@
             });
         });
 
-        // --- Drive Link Auto-Converter (Strongest Path lh3) ---
+        // --- Drive Link Auto-Converter ---
         function getDirectDriveLink(url) {
             if (!url) return url;
             let fileId = null;
@@ -406,17 +447,26 @@
         function initTheme() {
             const themeBtn = document.getElementById('themeToggle');
             const savedTheme = localStorage.getItem('sharks-theme');
+            
+            const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+            const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-mode');
-                themeBtn.innerText = '☀️';
+                themeBtn.innerHTML = sunIcon;
             } else {
-                themeBtn.innerText = '🌙';
+                themeBtn.innerHTML = moonIcon;
             }
             
             themeBtn.addEventListener('click', () => {
                 document.body.classList.toggle('dark-mode');
                 const isDark = document.body.classList.contains('dark-mode');
-                themeBtn.innerText = isDark ? '☀️' : '🌙';
+                
+                themeBtn.innerHTML = isDark ? sunIcon : moonIcon;
+                
+                themeBtn.style.transform = 'scale(0.7) rotate(30deg)';
+                setTimeout(() => { themeBtn.style.transform = 'scale(1) rotate(0deg)'; }, 200);
+
                 localStorage.setItem('sharks-theme', isDark ? 'dark' : 'light');
             });
         }
@@ -449,10 +499,44 @@
                 const response = await fetch(API_URL);
                 allBrands = await response.json();
                 loadingElement.style.display = 'none';
+                
+                // إنشاء التصنيفات أوتوماتيكياً بناءً على الأكثر تكراراً
+                generateDynamicCategories();
                 applyFilters();
             } catch (error) {
                 loadingElement.innerHTML = "<p style='color:red;'>عذراً، حدث خطأ أثناء تحميل البيانات من قاعدة البيانات.</p>";
             }
+        }
+
+        // --- الدالة الذكية لإنشاء أزرار التصنيف ---
+        function generateDynamicCategories() {
+            const categoryCounts = {};
+            
+            // حساب تكرار كل تصنيف
+            allBrands.forEach(brand => {
+                if (brand.Category && brand.Category.trim() !== '') {
+                    const cat = brand.Category.trim();
+                    categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+                }
+            });
+
+            // ترتيب التصنيفات من الأكتر للأقل
+            const sortedCategories = Object.keys(categoryCounts).sort((a, b) => categoryCounts[b] - categoryCounts[a]);
+            
+            // اختيار أعلى 4 تصنيفات بس
+            const topCategories = sortedCategories.slice(0, 4);
+
+            const tagsContainer = document.getElementById('filterTags');
+            // الحفاظ على زرار "عرض الكل"
+            tagsContainer.innerHTML = '<button class="tag-btn active" data-filter="all">عرض الكل</button>';
+
+            // رسم باقي الزراير
+            topCategories.forEach(cat => {
+                tagsContainer.innerHTML += `<button class="tag-btn" data-filter="${cat}">${cat}</button>`;
+            });
+
+            // تفعيل فلاتر الزراير الجديدة
+            setupFilters();
         }
 
         function setupFilters() {
@@ -544,7 +628,6 @@
                 </div>`;
         }
         
-        // Anti-Spam Tracking Update 
         function trackAction(brandName, actionType) {
             const storageKey = `ms_track_${brandName}_${actionType}`;
             const now = new Date().getTime();
@@ -623,7 +706,6 @@
             let images = [];
             for(let i=1; i<=10; i++) {
                 let galImg = brand[`Gallery${i}`];
-                // الفلتر الصارم
                 if(galImg) {
                     let imgStr = galImg.toString().trim();
                     if(imgStr !== '' && imgStr.includes('http')) {
@@ -655,7 +737,7 @@
 
         // --- Lightbox Functions ---
         function openLightbox(src) {
-            if(src.includes('Error+Loading+Image')) return; 
+            if(src.includes('Error+Loading+Image') || src.includes('data:image')) return; 
             const lb = document.getElementById('imageLightbox');
             document.getElementById('lightboxImg').src = src;
             lb.style.display = 'flex';
