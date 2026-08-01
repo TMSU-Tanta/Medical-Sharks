@@ -66,23 +66,6 @@
             opacity: 0.03;
         }
 
-        /* ===== Top Announcement Bar ===== */
-        .top-announcement {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            color: var(--btn-text);
-            text-align: center;
-            padding: 8px 15px;
-            font-family: 'Tajawal', sans-serif;
-            font-weight: 700;
-            font-size: 0.95rem;
-            position: relative;
-            z-index: 1001;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        body.dark-mode .top-announcement {
-            background: linear-gradient(90deg, var(--primary), #d97706);
-        }
-
         /* ===== Navbar ===== */
         .navbar {
             position: sticky; top: 0; z-index: 100;
@@ -129,12 +112,29 @@
         .theme-toggle:hover { background: rgba(128, 128, 128, 0.1); }
 
         /* ===== Hero Section ===== */
-        .hero { text-align: center; padding: 70px 20px 80px; max-width: 900px; margin: 0 auto; position: relative; }
+        .hero { text-align: center; padding: 80px 20px; max-width: 900px; margin: 0 auto; position: relative; }
         .hero-content { transition: transform 0.1s ease-out, opacity 0.1s ease-out; }
         
         .hero-main-title { font-family: 'Cairo', sans-serif; font-size: 3.5rem; font-weight: 900; color: var(--primary); margin-bottom: 25px; line-height: 1.4; }
-        .hero-subtitle { color: var(--primary); font-size: 1.35rem; display: block; margin-bottom: 15px; }
-        .hero p { font-size: 1.2rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 40px; max-width: 750px; margin-inline: auto; font-weight: 500; }
+        .hero-subtitle { color: var(--primary); font-size: 1.35rem; display: block; margin-bottom: 15px; font-weight: 800; }
+        
+        /* بادچ الإشراف الرسمي */
+        .supervision-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            background: var(--glass-bg);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-desc { font-size: 1.2rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 40px; max-width: 750px; margin-inline: auto; font-weight: 500; }
         
         /* Buttons */
         .btn { padding: 14px 35px; border-radius: 8px; font-family: 'Cairo', sans-serif; font-size: 1.1rem; font-weight: 700; text-decoration: none; transition: all 0.3s ease; display: inline-block; cursor: pointer; }
@@ -265,7 +265,6 @@
            ===== Mobile & Responsive Adjustments ===== 
            ========================================================= */
         @media (max-width: 768px) {
-            .top-announcement { font-size: 0.85rem; padding: 6px 10px; }
             .navbar { flex-wrap: wrap; padding: 15px 15px; justify-content: space-between; gap: 8px; }
             .nav-title { order: 3; width: 100%; font-size: 1.6rem; margin-top: 5px; }
             .nav-logos { gap: 10px; }
@@ -276,7 +275,8 @@
             .hero { padding: 40px 15px 50px; }
             .hero-main-title { font-size: 2.3rem; line-height: 1.5; }
             .hero-subtitle { font-size: 1.15rem; line-height: 1.6; }
-            .hero p { font-size: 1.05rem; padding: 0 10px; }
+            .supervision-badge { font-size: 0.9rem; padding: 6px 18px; margin-bottom: 25px; }
+            .hero-desc { font-size: 1.05rem; padding: 0 10px; }
             
             .hero-btns { flex-direction: column; width: 100%; padding: 0 20px; }
             .btn { width: 100%; }
@@ -294,11 +294,6 @@
 <body>
 
     <div class="noise-overlay"></div>
-
-    <!-- الشريط الإعلاني العلوي الجديد -->
-    <div class="top-announcement">
-        Medical Sharks | المنصة الرسمية لريادة الأعمال بطلاب كلية الطب - جامعة طنطا تحت إشراف اتحاد طلاب طب طنطا
-    </div>
 
     <nav class="navbar">
         <!-- الجزء اليمين -->
@@ -330,10 +325,15 @@
     <section class="hero reveal active">
         <div class="hero-content" id="heroContent">
             <h1 class="hero-main-title">مرحباً بكم في <br> <bdi>Medical Sharks</bdi> 🦈🩺</h1>
-            <p>
-                <strong class="hero-subtitle">المنصة الرسمية الأولى لريادة الأعمال لطلاب كلية الطب - جامعة طنطا.</strong>
+            
+            <h2 class="hero-subtitle">المنصة الرسمية لريادة الأعمال بطلاب كلية الطب - جامعة طنطا</h2>
+            <!-- البادچ الجديد للإشراف -->
+            <div class="supervision-badge">✨ تحت إشراف اتحاد طلاب طب طنطا ✨</div>
+            
+            <p class="hero-desc">
                 نُسلط الضوء على العلامات التجارية والمبادرات الواعدة التي يقودها أطباء المستقبل لنصنع بيئة متكاملة تُعزز التواصل وتدعم الفكر الريادي وتحول الأفكار الطبية والإبداعية إلى مشاريع ناجحة داخل الحرم الجامعي وخارجه.
             </p>
+            
             <div class="hero-btns">
                 <a href="#directory" class="btn btn-primary" id="exploreBtn">تصفح الدليل</a>
                 <!-- تم إضافة لينك الفورم -->
@@ -369,7 +369,6 @@
     <footer class="mega-footer reveal">
         <div class="footer-content">
             <div class="footer-logo">Medical Sharks</div>
-            <!-- الفوتر رجع لشكله الطبيعي عشان الكلام طلع فوق -->
             <p class="footer-desc">مبادرة طلابية تهدف إلى بناء مجتمع داعم للمواهب والمشاريع التجارية لطلاب كلية الطب بجامعة طنطا.</p>
             
             <a href="https://forms.gle/AfWX4H6XoUfS6ZBF6" target="_blank" class="btn btn-primary" style="margin-bottom: 40px; padding: 10px 30px; font-size: 1rem;">انضم إلى المنصة الآن</a>
