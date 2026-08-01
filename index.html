@@ -66,6 +66,23 @@
             opacity: 0.03;
         }
 
+        /* ===== Top Announcement Bar ===== */
+        .top-announcement {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: var(--btn-text);
+            text-align: center;
+            padding: 8px 15px;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1001;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        body.dark-mode .top-announcement {
+            background: linear-gradient(90deg, var(--primary), #d97706);
+        }
+
         /* ===== Navbar ===== */
         .navbar {
             position: sticky; top: 0; z-index: 100;
@@ -83,7 +100,7 @@
             background: #ffffff; border-radius: 50%;
             display: flex; align-items: center; justify-content: center; overflow: hidden;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border: 2px solid #fff; /* حافة بيضاء ثابتة للكل */
+            border: 2px solid #fff; 
         }
         
         .logo-img { 
@@ -93,10 +110,10 @@
         }
 
         /* ===== التحكم الدقيق في مقاس كل لوجو لتوحيدهم (Visual Normalization) ===== */
-        .logo-img.faculty { transform: scale(1.28); } /* تكبير لسد الفراغ الأبيض المدمج في الصورة */
-        .logo-img.union   { transform: scale(1.25); } /* تكبير لسد الفراغ الأبيض المدمج في الصورة */
-        .logo-img.family  { transform: scale(1.25); } /* تصغير بسيط جداً عشان ميمسش حافة الدائرة */
-        .logo-img.social  { transform: scale(0.95); } /* الحجم المثالي كمعيار */
+        .logo-img.faculty { transform: scale(1.28); } 
+        .logo-img.union   { transform: scale(1.25); } 
+        .logo-img.family  { transform: scale(1.25); } 
+        .logo-img.social  { transform: scale(0.95); } 
 
         
         .nav-title { font-family: 'Cairo', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--primary); letter-spacing: 1px; flex-grow: 1; text-align: center; }
@@ -112,7 +129,7 @@
         .theme-toggle:hover { background: rgba(128, 128, 128, 0.1); }
 
         /* ===== Hero Section ===== */
-        .hero { text-align: center; padding: 100px 20px 80px; max-width: 900px; margin: 0 auto; position: relative; }
+        .hero { text-align: center; padding: 70px 20px 80px; max-width: 900px; margin: 0 auto; position: relative; }
         .hero-content { transition: transform 0.1s ease-out, opacity 0.1s ease-out; }
         
         .hero-main-title { font-family: 'Cairo', sans-serif; font-size: 3.5rem; font-weight: 900; color: var(--primary); margin-bottom: 25px; line-height: 1.4; }
@@ -248,10 +265,11 @@
            ===== Mobile & Responsive Adjustments ===== 
            ========================================================= */
         @media (max-width: 768px) {
+            .top-announcement { font-size: 0.85rem; padding: 6px 10px; }
             .navbar { flex-wrap: wrap; padding: 15px 15px; justify-content: space-between; gap: 8px; }
             .nav-title { order: 3; width: 100%; font-size: 1.6rem; margin-top: 5px; }
             .nav-logos { gap: 10px; }
-            .nav-logo-wrapper { width: 48px; height: 48px; } 
+            .nav-logo-wrapper { width: 48px; height: 48px; padding: 3px; } 
             .theme-toggle { width: 42px; height: 42px; }
             .theme-toggle svg { width: 24px; height: 24px; }
             
@@ -277,15 +295,18 @@
 
     <div class="noise-overlay"></div>
 
+    <!-- الشريط الإعلاني العلوي الجديد -->
+    <div class="top-announcement">
+        Medical Sharks | المنصة الرسمية لريادة الأعمال بطلاب كلية الطب - جامعة طنطا تحت إشراف اتحاد طلاب طب طنطا
+    </div>
+
     <nav class="navbar">
         <!-- الجزء اليمين -->
         <div class="nav-logos">
             <div class="nav-logo-wrapper" title="شعار الكلية">
-                <!-- إضافة الكلاس faculty -->
                 <img src="https://lh3.googleusercontent.com/d/18ntxbXg3NmvBSwBPnuCHIRkaUzS_gYtu" alt="شعار الكلية" class="logo-img faculty">
             </div>
             <div class="nav-logo-wrapper" title="شعار الاتحاد">
-                <!-- إضافة الكلاس union -->
                 <img src="https://lh3.googleusercontent.com/d/1XPTpqy_pgQpZmfm6hmWDMemB0jHKy4uS" alt="شعار الاتحاد" class="logo-img union">
             </div>
         </div>
@@ -296,11 +317,9 @@
         <!-- الجزء الشمال -->
         <div class="nav-logos">
             <div class="nav-logo-wrapper" title="أسرة طلاب من أجل مصر">
-                <!-- إضافة الكلاس family -->
                 <img src="https://lh3.googleusercontent.com/d/1_1iDIuogVg8Ur-RRBTnhx-2YrqRtbW5S" alt="طلاب من أجل مصر" class="logo-img family">
             </div>
             <div class="nav-logo-wrapper" title="اللجنة الاجتماعية">
-                <!-- إضافة الكلاس social -->
                 <img src="https://lh3.googleusercontent.com/d/13iby6kkgw6QTBoQeF568C7S0utmEFKUF" alt="اللجنة الاجتماعية" class="logo-img social">
             </div>
             <!-- زرار الدارك مود -->
@@ -317,8 +336,8 @@
             </p>
             <div class="hero-btns">
                 <a href="#directory" class="btn btn-primary" id="exploreBtn">تصفح الدليل</a>
-                <!-- لينك فورم التسجيل هنا -->
-                <a href="https://forms.google.com/" target="_blank" class="btn btn-outline">تسجيل مشروع جديد</a>
+                <!-- تم إضافة لينك الفورم -->
+                <a href="https://forms.gle/AfWX4H6XoUfS6ZBF6" target="_blank" class="btn btn-outline">تسجيل مشروع جديد</a>
             </div>
         </div>
     </section>
@@ -350,10 +369,10 @@
     <footer class="mega-footer reveal">
         <div class="footer-content">
             <div class="footer-logo">Medical Sharks</div>
-            <p class="footer-desc">Medical Sharks | المنصة الرسمية لريادة الأعمال بطلاّب كلية الطب - جامعة طنطا تحت إشراف اتحاد طلاب طلبة كلية الطب جامعة طنطا</p>
+            <!-- الفوتر رجع لشكله الطبيعي عشان الكلام طلع فوق -->
+            <p class="footer-desc">مبادرة طلابية تهدف إلى بناء مجتمع داعم للمواهب والمشاريع التجارية لطلاب كلية الطب بجامعة طنطا.</p>
             
-            <!-- لينك فورم التسجيل التاني هنا -->
-            <a href="https://forms.google.com/" target="_blank" class="btn btn-primary" style="margin-bottom: 40px; padding: 10px 30px; font-size: 1rem;">انضم إلى المنصة الآن</a>
+            <a href="https://forms.gle/AfWX4H6XoUfS6ZBF6" target="_blank" class="btn btn-primary" style="margin-bottom: 40px; padding: 10px 30px; font-size: 1rem;">انضم إلى المنصة الآن</a>
             
             <div class="footer-bottom">
                 <p>تم التصميم والتطوير بواسطة <span style="color:var(--primary); font-weight:700;">اتحاد طلاب طب طنطا</span> </p>
