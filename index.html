@@ -92,7 +92,7 @@
             transition: transform 0.3s ease; 
         }
 
-        /* ===== التحكم الدقيق في مقاس كل لوجو لتوحيدهم (Visual Normalization) ===== */
+        /* ===== التحكم الدقيق في مقاس كل لوجو لتوحيدهم ===== */
         .logo-img.faculty { transform: scale(1.28); } 
         .logo-img.union   { transform: scale(1.25); } 
         .logo-img.family  { transform: scale(1.25); } 
@@ -118,18 +118,19 @@
         .hero-main-title { font-family: 'Cairo', sans-serif; font-size: 3.5rem; font-weight: 900; color: var(--primary); margin-bottom: 25px; line-height: 1.4; }
         .hero-subtitle { color: var(--primary); font-size: 1.35rem; display: block; margin-bottom: 15px; font-weight: 800; }
         
-        /* الجملة الرسمية - تصميم فورمال وأنيق */
-        .supervision-text {
-            display: flex; align-items: center; justify-content: center; gap: 15px;
-            font-family: 'Tajawal', sans-serif;
+        /* بادچ الإشراف المودرن الجديد */
+        .supervision-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
             font-size: 1.1rem;
-            color: var(--text-muted);
             margin-bottom: 35px;
         }
-        .supervision-text::before, .supervision-text::after {
-            content: ''; display: block; width: 50px; height: 1px; background: var(--primary); opacity: 0.4;
-        }
-        .supervision-text strong { color: var(--primary); font-weight: 700; }
 
         .hero-desc { font-size: 1.2rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 40px; max-width: 750px; margin-inline: auto; font-weight: 500; }
         
@@ -178,7 +179,7 @@
         
         .brand-name { font-family: 'Cairo', sans-serif; font-size: 1.6rem; font-weight: 800; margin-top: 55px; margin-bottom: 5px; color: var(--primary); }
         .brand-category { font-size: 0.9rem; color: var(--accent); font-weight: 700; margin-bottom: 15px; display: block; }
-        .brand-description { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 25px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .brand-description { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         
         /* ===== تعديلات الكارد فوتر (عرض التفاصيل) ===== */
         .card-footer-action {
@@ -289,10 +290,7 @@
             .hero { padding: 40px 15px 50px; }
             .hero-main-title { font-size: 2.3rem; line-height: 1.5; }
             .hero-subtitle { font-size: 1.15rem; line-height: 1.6; }
-            
-            .supervision-text { font-size: 0.95rem; margin-bottom: 25px; gap: 10px; }
-            .supervision-text::before, .supervision-text::after { width: 30px; }
-            
+            .supervision-badge { font-size: 0.95rem; padding: 6px 18px; margin-bottom: 25px; }
             .hero-desc { font-size: 1.05rem; padding: 0 10px; }
             
             .hero-btns { flex-direction: column; width: 100%; padding: 0 20px; }
@@ -345,7 +343,8 @@
             
             <h2 class="hero-subtitle">المنصة الرسمية لريادة الأعمال بطلاب كلية الطب - جامعة طنطا</h2>
             
-            <div class="supervision-text">تحت إشراف <strong>اتحاد طلاب طب طنطا</strong></div>
+            <!-- البادچ الشفاف بنفس شكل وتصميم الصورة -->
+            <div class="supervision-badge">✨ تحت إشراف اتحاد طلاب طب طنطا ✨</div>
             
             <p class="hero-desc">
                 نُسلط الضوء على العلامات التجارية والمبادرات الواعدة التي يقودها أطباء المستقبل لنصنع بيئة متكاملة تُعزز التواصل وتدعم الفكر الريادي وتحول الأفكار الطبية والإبداعية إلى مشاريع ناجحة داخل الحرم الجامعي وخارجه.
@@ -353,6 +352,7 @@
             
             <div class="hero-btns">
                 <a href="#directory" class="btn btn-primary" id="exploreBtn">تصفح الدليل</a>
+                <!-- لينك فورم التسجيل -->
                 <a href="https://forms.gle/AfWX4H6XoUfS6ZBF6" target="_blank" class="btn btn-outline">تسجيل مشروع جديد</a>
             </div>
         </div>
