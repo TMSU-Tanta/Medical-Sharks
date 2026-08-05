@@ -92,11 +92,11 @@
             transition: transform 0.3s ease; 
         }
 
-        /* ===== التحكم الدقيق في مقاس كل لوجو لتوحيدهم (Visual Normalization) ===== */
-        .logo-img.faculty { transform: scale(1.28); } 
-        .logo-img.union   { transform: scale(1.25); } 
-        .logo-img.family  { transform: scale(1.25); } 
-        .logo-img.social  { transform: scale(0.95); } 
+        /* ===== التحكم الدقيق في مقاس كل لوجو لتوحيدهم ===== */
+        .logo-img.faculty { transform: scale(1.15); } 
+        .logo-img.union   { transform: scale(1.15); } 
+        .logo-img.family  { transform: scale(0.95); } 
+        .logo-img.social  { transform: scale(1.05); } 
 
         
         .nav-title { font-family: 'Cairo', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--primary); letter-spacing: 1px; flex-grow: 1; text-align: center; }
@@ -118,21 +118,18 @@
         .hero-main-title { font-family: 'Cairo', sans-serif; font-size: 3.5rem; font-weight: 900; color: var(--primary); margin-bottom: 25px; line-height: 1.4; }
         .hero-subtitle { color: var(--primary); font-size: 1.35rem; display: block; margin-bottom: 15px; font-weight: 800; }
         
-        /* بادچ الإشراف الرسمي */
-        .supervision-badge {
-            display: inline-flex; align-items: center; justify-content: center;
-            background: var(--glass-bg);
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 8px 25px;
-            border-radius: 30px;
-            font-family: 'Cairo', sans-serif;
-            font-weight: 800;
-            font-size: 1.05rem;
+        /* الجملة الرسمية - تصميم فورمال وأنيق */
+        .supervision-text {
+            display: flex; align-items: center; justify-content: center; gap: 15px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-muted);
             margin-bottom: 35px;
-            box-shadow: 0 4px 15px var(--shadow-color);
-            backdrop-filter: blur(10px);
         }
+        .supervision-text::before, .supervision-text::after {
+            content: ''; display: block; width: 50px; height: 1px; background: var(--primary); opacity: 0.4;
+        }
+        .supervision-text strong { color: var(--primary); font-weight: 700; }
 
         .hero-desc { font-size: 1.2rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 40px; max-width: 750px; margin-inline: auto; font-weight: 500; }
         
@@ -181,9 +178,24 @@
         
         .brand-name { font-family: 'Cairo', sans-serif; font-size: 1.6rem; font-weight: 800; margin-top: 55px; margin-bottom: 5px; color: var(--primary); }
         .brand-category { font-size: 0.9rem; color: var(--accent); font-weight: 700; margin-bottom: 15px; display: block; }
-        .brand-description { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 25px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .students-names { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; border-top: 1px solid var(--glass-border); padding-top: 15px; margin-top: auto; }
+        .brand-description { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        /* ===== تعديلات الكارد فوتر (عرض التفاصيل) ===== */
+        .card-footer-action {
+            display: flex; justify-content: space-between; align-items: center;
+            border-top: 1px solid var(--glass-border); padding-top: 15px; margin-top: auto;
+        }
+        .students-names { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; margin: 0; }
         .students-names strong { color: var(--primary); font-weight: 700; }
+        
+        .read-more-text {
+            font-size: 0.9rem; font-family: 'Cairo', sans-serif; font-weight: 800;
+            color: var(--primary); display: flex; align-items: center; gap: 5px;
+            transition: all 0.3s ease;
+        }
+        .read-more-arrow { transition: transform 0.3s ease; }
+        .brand-card:hover .read-more-text { color: var(--accent); }
+        .brand-card:hover .read-more-arrow { transform: translateX(-5px); } 
 
         /* ===== Modal ===== */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.4s ease; }
@@ -231,10 +243,13 @@
         .slider-container { position: relative; width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border); background: var(--glass-bg); }
         .slider-track { display: flex; transition: transform 0.4s ease-in-out; }
         .slide-img { width: 100%; height: 400px; object-fit: contain; flex-shrink: 0; background: rgba(0,0,0,0.05); cursor: zoom-in; }
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: var(--glass-bg); color: var(--text-dark); border: 1px solid var(--glass-border); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; display: flex; justify-content: center; align-items: center; z-index: 10; transition: 0.3s; padding-bottom: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        
+        /* التعديل الجديد للأسهم في المعرض */
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: var(--glass-bg); color: var(--text-dark); border: 1px solid var(--glass-border); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center; z-index: 10; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .slider-btn:hover { background: var(--primary); color: var(--btn-text); }
         .right-btn { right: 15px; }
         .left-btn { left: 15px; }
+        
         .slider-dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
         .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--glass-border); cursor: pointer; transition: 0.3s; }
         .dot:hover { background: var(--accent); }
@@ -275,7 +290,10 @@
             .hero { padding: 40px 15px 50px; }
             .hero-main-title { font-size: 2.3rem; line-height: 1.5; }
             .hero-subtitle { font-size: 1.15rem; line-height: 1.6; }
-            .supervision-badge { font-size: 0.9rem; padding: 6px 18px; margin-bottom: 25px; }
+            
+            .supervision-text { font-size: 0.95rem; margin-bottom: 25px; gap: 10px; }
+            .supervision-text::before, .supervision-text::after { width: 30px; }
+            
             .hero-desc { font-size: 1.05rem; padding: 0 10px; }
             
             .hero-btns { flex-direction: column; width: 100%; padding: 0 20px; }
@@ -328,13 +346,14 @@
             
             <h2 class="hero-subtitle">المنصة الرسمية لريادة الأعمال بطلاب كلية الطب - جامعة طنطا</h2>
             
+            <div class="supervision-text">تحت إشراف <strong>اتحاد طلاب طب طنطا</strong></div>
+            
             <p class="hero-desc">
                 نُسلط الضوء على العلامات التجارية والمبادرات الواعدة التي يقودها أطباء المستقبل لنصنع بيئة متكاملة تُعزز التواصل وتدعم الفكر الريادي وتحول الأفكار الطبية والإبداعية إلى مشاريع ناجحة داخل الحرم الجامعي وخارجه.
             </p>
             
             <div class="hero-btns">
                 <a href="#directory" class="btn btn-primary" id="exploreBtn">تصفح الدليل</a>
-                <!-- تم إضافة لينك الفورم -->
                 <a href="https://forms.gle/AfWX4H6XoUfS6ZBF6" target="_blank" class="btn btn-outline">تسجيل مشروع جديد</a>
             </div>
         </div>
@@ -409,9 +428,14 @@
                 <div class="modal-gallery-wrapper" id="galleryWrapper" style="display: none;">
                     <h4 class="modal-section-title" id="galleryTitle">معرض الأعمال</h4>
                     <div class="slider-container">
-                        <button class="slider-btn right-btn" onclick="moveSlide(-1)">&#10095;</button>
+                        <!-- تم التبديل لأيقونات SVG هنا لمنع الإنعكاس -->
+                        <button class="slider-btn right-btn" onclick="moveSlide(-1)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
                         <div class="slider-track" id="modalSlider"></div>
-                        <button class="slider-btn left-btn" onclick="moveSlide(1)">&#10094;</button>
+                        <button class="slider-btn left-btn" onclick="moveSlide(1)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        </button>
                     </div>
                     <div class="slider-dots" id="sliderDots"></div>
                 </div>
@@ -667,7 +691,11 @@
                         <h2 class="brand-name">${brand.BrandName}</h2>
                         <span class="brand-category">${brand.Category}</span>
                         <p class="brand-description">${brand.Description || 'لا يوجد وصف متاح.'}</p>
-                        <p class="students-names">المؤسسون: <strong>${brand.Students || 'طلاب الكلية'}</strong></p>
+                        
+                        <div class="card-footer-action">
+                            <p class="students-names">المؤسسون: <strong>${brand.Students || 'طلاب الكلية'}</strong></p>
+                            <span class="read-more-text">عرض التفاصيل <span class="read-more-arrow">←</span></span>
+                        </div>
                     </div>
                 </div>`;
         }
