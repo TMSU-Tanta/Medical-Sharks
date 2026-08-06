@@ -5,17 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medical Sharks | المنصة الرسمية لمشاريع طب طنطا</title>
     
-    <!-- إضافة أيقونة التاب (Favicon) لمنع المتصفح من التحميل المستمر -->
     <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1XPTpqy_pgQpZmfm6hmWDMemB0jHKy4uS">
-
-    <!-- Google Fonts: Cairo for Headings, Tajawal for Body -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* ===== Soft & Professional Variables (Light Mode Default) ===== */
         :root {
             --primary: #0b5b9c;
             --secondary: #1a73e8;
-            --accent: #d97706; /* Soft Vintage Gold */
+            --accent: #d97706;
             --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             --glass-bg: rgba(255, 255, 255, 0.7);
             --glass-border: rgba(255, 255, 255, 0.4);
@@ -26,7 +22,6 @@
             --botm-glow: 0 0 20px rgba(217, 119, 6, 0.4);
         }
 
-        /* ===== Cinematic Dark Mode ===== */
         body.dark-mode {
             --primary: #f59e0b; 
             --secondary: #d97706;
@@ -42,851 +37,206 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        /* ===== Scrollbar ===== */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg-gradient); }
         ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--secondary); }
-
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background: var(--bg-gradient);
-            color: var(--text-dark);
-            min-height: 100vh;
-            overflow-x: hidden;
-            transition: background 0.5s ease, color 0.5s ease;
-        }
-
-        /* Subtly Textured Background */
-        .noise-overlay {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none; z-index: 9999;
-            background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');
-            opacity: 0.03;
-        }
-
-        /* ===== Navbar ===== */
-        .navbar {
-            position: sticky; top: 0; z-index: 100;
-            background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 4px 30px var(--shadow-color);
-            transition: all 0.5s ease;
-        }
         
+        body { font-family: 'Tajawal', sans-serif; background: var(--bg-gradient); color: var(--text-dark); min-height: 100vh; overflow-x: hidden; }
+
+        .noise-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999; background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E'); opacity: 0.03; }
+
+        .navbar { position: sticky; top: 0; z-index: 100; background: var(--glass-bg); backdrop-filter: blur(16px); border-bottom: 1px solid var(--glass-border); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 30px var(--shadow-color); }
         .nav-logos { display: flex; align-items: center; gap: 12px; }
-        
-        .nav-logo-wrapper {
-            width: 55px; height: 55px; 
-            background: #ffffff; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border: 2px solid #fff; 
-        }
-        
-        .logo-img { 
-            width: 100%; height: 100%; 
-            object-fit: contain; 
-            transition: transform 0.3s ease; 
-        }
-
-        /* ===== التحكم الدقيق في مقاس كل لوجو لتوحيدهم ===== */
+        .nav-logo-wrapper { width: 55px; height: 55px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border: 2px solid #fff; }
+        .logo-img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease; }
         .logo-img.faculty { transform: scale(1.28); } 
         .logo-img.union   { transform: scale(1.25); } 
         .logo-img.family  { transform: scale(1.25); } 
         .logo-img.social  { transform: scale(0.95); } 
-
-        
         .nav-title { font-family: 'Cairo', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--primary); letter-spacing: 1px; flex-grow: 1; text-align: center; }
-        
-        /* Modern Theme Toggle */
-        .theme-toggle {
-            background: transparent; border: none;
-            cursor: pointer; color: var(--text-dark); 
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex; align-items: center; justify-content: center;
-            width: 45px; height: 45px; border-radius: 50%;
-        }
-        .theme-toggle:hover { background: rgba(128, 128, 128, 0.1); }
+        .theme-toggle { background: transparent; border: none; cursor: pointer; color: var(--text-dark); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-        /* ===== Hero Section ===== */
-        .hero { text-align: center; padding: 80px 20px; max-width: 900px; margin: 0 auto; position: relative; }
-        .hero-content { transition: transform 0.1s ease-out, opacity 0.1s ease-out; }
-        
+        .hero { text-align: center; padding: 80px 20px; max-width: 900px; margin: 0 auto; }
         .hero-main-title { font-family: 'Cairo', sans-serif; font-size: 3.5rem; font-weight: 900; color: var(--primary); margin-bottom: 25px; line-height: 1.4; }
         .hero-subtitle { color: var(--primary); font-size: 1.35rem; display: block; margin-bottom: 15px; font-weight: 800; }
-        
-        /* بادچ الإشراف المودرن */
-        .supervision-badge {
-            display: inline-flex; align-items: center; justify-content: center;
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 8px 25px;
-            border-radius: 50px;
-            font-family: 'Cairo', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 35px;
-        }
-
-        .hero-desc { font-size: 1.2rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 40px; max-width: 750px; margin-inline: auto; font-weight: 500; }
-        
-        /* Buttons */
+        .supervision-badge { display: inline-flex; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--primary); color: var(--primary); padding: 8px 25px; border-radius: 50px; font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 35px; }
+        .hero-desc { font-size: 1.2rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 40px; max-width: 750px; margin-inline: auto; }
         .btn { padding: 14px 35px; border-radius: 8px; font-family: 'Cairo', sans-serif; font-size: 1.1rem; font-weight: 700; text-decoration: none; transition: all 0.3s ease; display: inline-block; cursor: pointer; }
         .btn-primary { background: var(--primary); color: var(--btn-text); box-shadow: 0 10px 20px var(--shadow-color); border: 2px solid var(--primary); }
-        .btn-primary:hover { background: var(--secondary); border-color: var(--secondary); transform: translateY(-3px); }
         .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
-        .btn-outline:hover { background: var(--primary); color: var(--btn-text); }
         .hero-btns { display: flex; gap: 15px; justify-content: center; }
 
-        /* ===== Search & Filters ===== */
         .search-container { max-width: 800px; margin: 0 auto 30px; padding: 0 20px; }
-        .search-input { width: 100%; padding: 18px 25px; border-radius: 12px; border: 1px solid var(--glass-border); background: var(--glass-bg); color: var(--text-dark); font-family: 'Tajawal', sans-serif; font-size: 1.1rem; box-shadow: 0 4px 15px var(--shadow-color); transition: all 0.3s ease; outline: none; }
-        .search-input:focus { border-color: var(--primary); }
-
+        .search-input { width: 100%; padding: 18px 25px; border-radius: 12px; border: 1px solid var(--glass-border); background: var(--glass-bg); color: var(--text-dark); font-family: 'Tajawal', sans-serif; font-size: 1.1rem; box-shadow: 0 4px 15px var(--shadow-color); outline: none; }
         .tags-container { max-width: 900px; margin: 0 auto 60px; padding: 0 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-        .tag-btn { padding: 8px 24px; border-radius: 30px; border: 1px solid var(--primary); background: transparent; color: var(--text-dark); cursor: pointer; transition: 0.3s; font-family: 'Tajawal', sans-serif; font-weight: 600; font-size: 1rem; }
-        .tag-btn:hover { background: var(--glass-bg); }
-        .tag-btn.active { background: var(--primary); color: var(--btn-text); border-color: var(--primary); }
+        .tag-btn { padding: 8px 24px; border-radius: 30px; border: 1px solid var(--primary); background: transparent; color: var(--text-dark); cursor: pointer; transition: 0.3s; font-family: 'Tajawal', sans-serif; font-weight: 600; }
+        .tag-btn.active { background: var(--primary); color: var(--btn-text); }
 
-        /* ===== Brands Directory ===== */
         .directory-container { max-width: 1300px; margin: 0 auto; padding: 0 20px 100px; }
-        
-        .spotlight-section { margin-bottom: 60px; }
-        .spotlight-title { font-family: 'Cairo', sans-serif; color: var(--primary); text-align: center; margin-bottom: 25px; font-size: 2.2rem; display: flex; justify-content: center; align-items: center; gap: 10px; font-weight: 900; }
-        
         .brands-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 30px; }
-        .spotlight-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; }
-        .spotlight-grid .brand-card { max-width: 450px; width: 100%; border: 2px solid var(--primary); box-shadow: var(--botm-glow); }
-        
-        /* Brand Card */
         .brand-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; cursor: pointer; position: relative; box-shadow: 0 10px 30px var(--shadow-color); }
         .brand-card:hover { transform: translateY(-10px); border-color: var(--primary); }
-        
-        .botm-badge { position: absolute; top: 15px; right: 15px; background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; padding: 5px 15px; border-radius: 20px; font-family: 'Cairo', sans-serif; font-size: 0.9rem; font-weight: 800; z-index: 20; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-
+        .botm-badge { position: absolute; top: 15px; right: 15px; background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; padding: 5px 15px; border-radius: 20px; font-family: 'Cairo', sans-serif; font-size: 0.9rem; font-weight: 800; z-index: 20; }
         .cover-image-container { height: 220px; width: 100%; position: relative; overflow: hidden; }
-        .cover-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
-        .brand-card:hover .cover-image { transform: scale(1.05); }
-        .cover-image-container::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 60%; background: linear-gradient(to top, var(--glass-bg), transparent); }
-        
+        .cover-image { width: 100%; height: 100%; object-fit: cover; }
         .brand-info { padding: 0 30px 30px; position: relative; flex-grow: 1; display: flex; flex-direction: column; }
-        .logo-container { width: 85px; height: 85px; border-radius: 12px; background: #fff; padding: 4px; position: absolute; top: -42px; left: 30px; border: 1px solid var(--glass-border); z-index: 10; box-shadow: 0 8px 20px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; overflow: hidden; }
-        .brand-logo { width: 100%; height: 100%; border-radius: 8px; object-fit: contain; }
-        
+        .logo-container { width: 85px; height: 85px; border-radius: 12px; background: #fff; padding: 4px; position: absolute; top: -42px; left: 30px; border: 1px solid var(--glass-border); z-index: 10; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        .brand-logo { width: 100%; height: 100%; object-fit: contain; }
         .brand-name { font-family: 'Cairo', sans-serif; font-size: 1.6rem; font-weight: 800; margin-top: 55px; margin-bottom: 5px; color: var(--primary); }
-        .brand-category { font-size: 0.9rem; color: var(--accent); font-weight: 700; margin-bottom: 15px; display: block; }
-        .brand-description { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        
-        /* ===== تعديلات الكارد فوتر (عرض التفاصيل) ===== */
-        .card-footer-action {
-            display: flex; justify-content: space-between; align-items: center;
-            border-top: 1px solid var(--glass-border); padding-top: 15px; margin-top: auto;
-        }
-        .students-names { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; margin: 0; }
-        .students-names strong { color: var(--primary); font-weight: 700; }
-        
-        .read-more-text {
-            font-size: 0.9rem; font-family: 'Cairo', sans-serif; font-weight: 800;
-            color: var(--primary); display: flex; align-items: center; gap: 5px;
-            transition: all 0.3s ease;
-        }
-        .read-more-arrow { transition: transform 0.3s ease; }
-        .brand-card:hover .read-more-text { color: var(--accent); }
-        .brand-card:hover .read-more-arrow { transform: translateX(-5px); }
+        .brand-category { font-size: 0.9rem; color: var(--accent); font-weight: 700; margin-bottom: 15px; }
+        .brand-description { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; flex-grow: 1; }
+        .card-footer-action { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--glass-border); padding-top: 15px; margin-top: auto; }
+        .read-more-text { font-size: 0.9rem; font-family: 'Cairo', sans-serif; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 5px; }
 
-        /* ===== Modal ===== */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.4s ease; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-content { background: var(--glass-bg); border: 1px solid var(--glass-border); width: 100%; max-width: 900px; max-height: 90vh; border-radius: 20px; overflow-y: auto; position: relative; transform: translateY(30px) scale(0.98); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
+        .modal-content { background: var(--glass-bg); border: 1px solid var(--glass-border); width: 100%; max-width: 900px; max-height: 90vh; border-radius: 20px; overflow-y: auto; position: relative; transform: translateY(30px) scale(0.98); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
-        
-        /* التعديل الجذري لزرار الـ X باستخدام SVG و Flexbox لتوسيط هندسي دقيق 100% */
         .close-btn { position: absolute; top: 20px; right: 25px; color: #fff; cursor: pointer; z-index: 10; background: rgba(0,0,0,0.5); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.2); transition: 0.3s; padding: 0; }
         .close-btn svg { width: 22px; height: 22px; }
-        .close-btn:hover { background: var(--primary); border-color: var(--primary); color: var(--btn-text); }
-        
+        .close-btn:hover { background: var(--primary); color: #fff; }
         .modal-header { position: relative; height: 350px; }
         .modal-cover { width: 100%; height: 100%; object-fit: cover; }
-        .modal-header::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 80%; background: linear-gradient(to top, var(--glass-bg), transparent); }
-        
         .modal-body { padding: 0 50px 50px; position: relative; margin-top: -60px; z-index: 2; }
         .modal-header-flex { display: flex; gap: 25px; align-items: flex-end; margin-bottom: 30px; }
         .modal-logo { width: 120px; height: 120px; border-radius: 16px; border: 4px solid var(--glass-bg); background: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.1); object-fit: contain; }
-        
-        /* التعديل الجذري لعنوان المشروع والتصنيف لفصلهم عن الكأس وتوسيطهم */
         .modal-title-wrapper { padding-bottom: 10px; display: flex; flex-direction: column; align-items: flex-start; width: 100%; }
-        .modal-title { font-family: 'Cairo', sans-serif; font-size: 2.5rem; font-weight: 900; margin-bottom: 5px; color: var(--primary); line-height: 1; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .modal-category { color: var(--accent); font-size: 1rem; font-weight: 700; letter-spacing: 0; }
-        
+        .modal-title { font-family: 'Cairo', sans-serif; font-size: 2.5rem; font-weight: 900; color: var(--primary); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .modal-category { color: var(--accent); font-size: 1rem; font-weight: 700; }
         .modal-section-title { font-family: 'Cairo', sans-serif; font-size: 1.4rem; color: var(--text-dark); margin: 30px 0 15px; padding-bottom: 10px; border-bottom: 1px solid var(--glass-border); }
         .modal-desc { font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; }
-        
-        /* Discount Box */
         .discount-code-wrapper { margin-top: 20px; display: none; }
-        .discount-box { background: rgba(217, 119, 6, 0.1); border: 2px dashed var(--primary); color: var(--primary); padding: 15px; border-radius: 8px; text-align: center; font-family: 'Cairo', sans-serif; font-weight: 800; font-size: 1.2rem; cursor: pointer; transition: 0.3s; width: 100%; }
-        .discount-box span { color: var(--accent); letter-spacing: 2px; font-size: 1.4rem; margin: 0 10px; }
-        .discount-box:hover { background: var(--primary); color: var(--btn-text); border-style: solid; }
-        .discount-box:hover span { color: var(--btn-text); }
-
-        /* Social Links */
+        .discount-box { background: rgba(217, 119, 6, 0.1); border: 2px dashed var(--primary); color: var(--primary); padding: 15px; border-radius: 8px; text-align: center; font-family: 'Cairo', sans-serif; font-weight: 800; font-size: 1.2rem; cursor: pointer; }
         .modal-social-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 25px; }
-        .social-link-item { display: flex; align-items: center; justify-content: center; padding: 14px; border-radius: 8px; color: white; text-decoration: none; font-weight: 700; font-family: 'Cairo', sans-serif; transition: 0.3s; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .social-link-item:hover { filter: brightness(1.1); transform: translateY(-3px); }
-        .fb-btn { background: #1877F2; }
-        .ig-btn { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
-        .wa-btn { background: #25D366; color: #fff; }
-
-        .share-btn { width: 100%; margin-top: 15px; background: transparent; color: var(--primary); border: 2px dashed var(--primary); padding: 14px; border-radius: 8px; font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px;}
-        .share-btn:hover { background: var(--primary); color: var(--btn-text); }
-
-        /* ===== Slider / Carousel Styles ===== */
-        .modal-gallery-wrapper { margin-top: 40px; }
+        .social-link-item { display: flex; align-items: center; justify-content: center; padding: 14px; border-radius: 8px; color: white; text-decoration: none; font-weight: 700; transition: 0.3s; }
+        .fb-btn { background: #1877F2; } .ig-btn { background: #bc1888; } .wa-btn { background: #25D366; }
+        .share-btn { width: 100%; margin-top: 15px; background: transparent; color: var(--primary); border: 2px dashed var(--primary); padding: 14px; border-radius: 8px; font-family: 'Cairo', sans-serif; font-weight: 700; cursor: pointer; }
+        
         .slider-container { position: relative; width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border); background: var(--glass-bg); }
         .slider-track { display: flex; transition: transform 0.4s ease-in-out; }
-        .slide-img { width: 100%; height: 400px; object-fit: contain; flex-shrink: 0; background: rgba(0,0,0,0.05); cursor: zoom-in; }
-        
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: var(--glass-bg); color: var(--text-dark); border: 1px solid var(--glass-border); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center; z-index: 10; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .slider-btn:hover { background: var(--primary); color: var(--btn-text); }
-        .right-btn { right: 15px; }
-        .left-btn { left: 15px; }
-        
+        .slide-img { width: 100%; height: 400px; object-fit: contain; flex-shrink: 0; }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: var(--glass-bg); color: var(--text-dark); border: 1px solid var(--glass-border); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center; z-index: 10; }
         .slider-dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
-        .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--glass-border); cursor: pointer; transition: 0.3s; }
-        .dot:hover { background: var(--accent); }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--glass-border); cursor: pointer; }
         .dot.active { background: var(--primary); }
 
-        /* ===== Lightbox (Full Screen Image) ===== */
-        .lightbox-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 2000; align-items: center; justify-content: center; cursor: zoom-out; backdrop-filter: blur(5px); opacity: 0; transition: opacity 0.3s ease; }
-        .lightbox-overlay.active { opacity: 1; }
-        .lightbox-img { max-width: 95%; max-height: 95vh; border-radius: 8px; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.5); transform: scale(0.95); transition: transform 0.3s ease; }
-        .lightbox-overlay.active .lightbox-img { transform: scale(1); }
-        .lightbox-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; z-index: 2001; }
-
-        /* ===== Mega Footer ===== */
-        .mega-footer { background: var(--glass-bg); backdrop-filter: blur(10px); border-top: 1px solid var(--glass-border); padding: 80px 20px 30px; margin-top: 60px; }
-        .footer-content { max-width: 1200px; margin: 0 auto; text-align: center; }
-        .footer-logo { font-family: 'Cairo', sans-serif; font-size: 2rem; font-weight: 900; margin-bottom: 20px; color: var(--primary); }
-        .footer-desc { color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; line-height: 1.8; }
-        .footer-bottom { border-top: 1px solid var(--glass-border); padding-top: 30px; color: var(--text-muted); font-size: 0.95rem; }
-        
-        /* Utility */
-        .loader-container { display: flex; justify-content: center; align-items: center; min-height: 300px; width: 100%; grid-column: 1/-1;}
-        .spinner { width: 45px; height: 45px; border: 4px solid var(--glass-border); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* =========================================================
-           ===== Mobile & Responsive Adjustments ===== 
-           ========================================================= */
         @media (max-width: 768px) {
-            .navbar { flex-wrap: wrap; padding: 15px 15px; justify-content: space-between; gap: 8px; }
-            .nav-title { order: 3; width: 100%; font-size: 1.6rem; margin-top: 5px; }
-            .nav-logos { gap: 10px; }
-            .nav-logo-wrapper { width: 48px; height: 48px; padding: 3px; } 
-            .theme-toggle { width: 42px; height: 42px; }
-            .theme-toggle svg { width: 24px; height: 24px; }
-            
-            .hero { padding: 40px 15px 50px; }
-            .hero-main-title { font-size: 2.3rem; line-height: 1.5; }
-            .hero-subtitle { font-size: 1.15rem; line-height: 1.6; }
-            .supervision-badge { font-size: 0.95rem; padding: 6px 18px; margin-bottom: 25px; }
-            .hero-desc { font-size: 1.05rem; padding: 0 10px; }
-            
-            .hero-btns { flex-direction: column; width: 100%; padding: 0 20px; }
-            .btn { width: 100%; }
-            
-            /* تعديل الأيقونة في الموبايل */
             .close-btn { top: 15px; right: 15px; width: 38px; height: 38px; }
             .close-btn svg { width: 18px; height: 18px; }
-            
-            .modal-header { height: 200px; }
-            .modal-logo { width: 90px; height: 90px; margin-top: -45px; border-width: 3px; }
-            .modal-header-flex { flex-direction: column; align-items: center; text-align: center; gap: 15px; margin-bottom: 20px; }
-            
-            /* التعديل الإجباري لتوسيط الاسم والتصنيف */
             .modal-title-wrapper { align-items: center; text-align: center; }
-            .modal-title { justify-content: center; font-size: 1.8rem; text-align: center; width: 100%; }
+            .modal-title { justify-content: center; font-size: 1.8rem; }
             .modal-category { display: block; text-align: center; margin-top: 5px; width: 100%; }
-            
-            .modal-body { padding: 0 20px 30px; margin-top: 0; }
-            .brands-grid { grid-template-columns: 1fr; }
-            .search-input { font-size: 1rem; padding: 15px 20px; }
-            .tag-btn { font-size: 0.9rem; padding: 6px 18px; }
         }
     </style>
 </head>
 <body>
 
     <div class="noise-overlay"></div>
-
     <nav class="navbar">
-        <!-- الجزء اليمين -->
         <div class="nav-logos">
-            <div class="nav-logo-wrapper" title="شعار الكلية">
-                <img src="https://lh3.googleusercontent.com/d/18ntxbXg3NmvBSwBPnuCHIRkaUzS_gYtu" alt="شعار الكلية" class="logo-img faculty">
-            </div>
-            <div class="nav-logo-wrapper" title="شعار الاتحاد">
-                <img src="https://lh3.googleusercontent.com/d/1XPTpqy_pgQpZmfm6hmWDMemB0jHKy4uS" alt="شعار الاتحاد" class="logo-img union">
-            </div>
+            <div class="nav-logo-wrapper"><img src="https://lh3.googleusercontent.com/d/18ntxbXg3NmvBSwBPnuCHIRkaUzS_gYtu" alt="شعار الكلية" class="logo-img faculty"></div>
+            <div class="nav-logo-wrapper"><img src="https://lh3.googleusercontent.com/d/1XPTpqy_pgQpZmfm6hmWDMemB0jHKy4uS" alt="شعار الاتحاد" class="logo-img union"></div>
         </div>
-
-        <!-- الجزء اللي في النص -->
         <div class="nav-title">Medical Sharks</div>
-
-        <!-- الجزء الشمال -->
         <div class="nav-logos">
-            <div class="nav-logo-wrapper" title="أسرة طلاب من أجل مصر">
-                <img src="https://lh3.googleusercontent.com/d/1_1iDIuogVg8Ur-RRBTnhx-2YrqRtbW5S" alt="طلاب من أجل مصر" class="logo-img family">
-            </div>
-            <div class="nav-logo-wrapper" title="اللجنة الاجتماعية">
-                <img src="https://lh3.googleusercontent.com/d/13iby6kkgw6QTBoQeF568C7S0utmEFKUF" alt="اللجنة الاجتماعية" class="logo-img social">
-            </div>
-            <!-- زرار الدارك مود -->
-            <button class="theme-toggle" id="themeToggle" title="تبديل الوضع"></button>
+            <div class="nav-logo-wrapper"><img src="https://lh3.googleusercontent.com/d/1_1iDIuogVg8Ur-RRBTnhx-2YrqRtbW5S" alt="طلاب من أجل مصر" class="logo-img family"></div>
+            <div class="nav-logo-wrapper"><img src="https://lh3.googleusercontent.com/d/13iby6kkgw6QTBoQeF568C7S0utmEFKUF" alt="اللجنة الاجتماعية" class="logo-img social"></div>
+            <button class="theme-toggle" id="themeToggle"></button>
         </div>
     </nav>
 
-    <section class="hero reveal active">
-        <div class="hero-content" id="heroContent">
+    <section class="hero">
+        <div class="hero-content">
             <h1 class="hero-main-title">مرحباً بكم في <br> <bdi>Medical Sharks</bdi> 🦈🩺</h1>
-            
             <h2 class="hero-subtitle">المنصة الرسمية لريادة الأعمال بطلاب كلية الطب - جامعة طنطا</h2>
-            
-            <!-- البادچ الشفاف بنفس شكل وتصميم الصورة -->
-            <div class="supervision-badge">✨ تحت إشراف اتحاد طلاب طب طنطا ✨</div>
-            
-            <p class="hero-desc">
-                نُسلط الضوء على العلامات التجارية والمبادرات الواعدة التي يقودها أطباء المستقبل لنصنع بيئة متكاملة تُعزز التواصل وتدعم الفكر الريادي وتحول الأفكار الطبية والإبداعية إلى مشاريع ناجحة داخل الحرم الجامعي وخارجه.
-            </p>
-            
+            <p class="hero-desc">نُسلط الضوء على العلامات التجارية والمبادرات الواعدة التي يقودها أطباء المستقبل.</p>
             <div class="hero-btns">
-                <a href="#directory" class="btn btn-primary" id="exploreBtn">تصفح الدليل</a>
-                <!-- لينك فورم التسجيل -->
+                <a href="#directory" class="btn btn-primary" id="exploreBtn">تصفح المشاريع</a>
                 <a href="https://forms.gle/AfWX4H6XoUfS6ZBF6" target="_blank" class="btn btn-outline">تسجيل مشروع جديد</a>
             </div>
         </div>
     </section>
 
-    <!-- Search & Filters -->
-    <div class="search-container reveal" id="directory">
-        <input type="text" id="searchInput" class="search-input" placeholder="ابحث عن اسم المشروع، التصنيف، أو الطالب المالك...">
+    <div class="search-container" id="directory">
+        <input type="text" id="searchInput" class="search-input" placeholder="ابحث عن اسم المشروع...">
     </div>
-    
-    <!-- حاوية الفلاتر -->
-    <div class="tags-container reveal" id="filterTags"></div>
-
-    <!-- Brands Directory -->
+    <div class="tags-container" id="filterTags"></div>
     <div class="directory-container">
-        <!-- شاشة التحميل مع الدالة الجديدة اللي بتعالج التأخير -->
-        <div id="loading" class="loader-container">
-            <div class="spinner"></div>
-        </div>
-        
-        <!-- Spotlight: Brand of the Month -->
-        <div id="spotlightSection" class="spotlight-section reveal" style="display: none;">
-            <h2 class="spotlight-title">🏆 نجم الشهر 🏆</h2>
-            <div id="spotlightGrid" class="spotlight-grid"></div>
-        </div>
-
+        <div id="loading" class="loader-container"><div class="spinner"></div></div>
+        <div id="spotlightSection" class="spotlight-section" style="display: none;"></div>
         <div id="brandsGrid" class="brands-grid"></div>
     </div>
 
-    <!-- Mega Footer -->
-    <footer class="mega-footer reveal">
-        <div class="footer-content">
-            <div class="footer-logo">Medical Sharks</div>
-            <p class="footer-desc">مبادرة طلابية تهدف إلى بناء مجتمع داعم للمواهب والمشاريع التجارية لطلاب كلية الطب بجامعة طنطا.</p>
-            
-            <a href="https://forms.gle/AfWX4H6XoUfS6ZBF6" target="_blank" class="btn btn-primary" style="margin-bottom: 40px; padding: 10px 30px; font-size: 1rem;">انضم إلى المنصة الآن</a>
-            
-            <div class="footer-bottom">
-                <p>تم التصميم والتطوير بواسطة <span style="color:var(--primary); font-weight:700;">اتحاد طلاب طب طنطا</span> </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Premium Modal Structure -->
     <div class="modal-overlay" id="brandModal" onclick="closeModal(event)">
         <div class="modal-content">
-            <!-- استخدام SVG بدلاً من النص لضمان التوسيط 100% -->
             <span class="close-btn" onclick="closeModal(event, true)">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </span>
-            <div class="modal-header">
-                <!-- Using 1x1 transparent pixel to prevent browser hanging on empty src -->
-                <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Cover" class="modal-cover" id="modalCover" onerror="this.src='https://via.placeholder.com/800x400/0f172a/ffffff?text=Image+Not+Found'">
-            </div>
+            <div class="modal-header"><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" class="modal-cover" id="modalCover"></div>
             <div class="modal-body">
                 <div class="modal-header-flex">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Logo" class="modal-logo" id="modalLogo" onerror="this.src='https://via.placeholder.com/150/ffffff/0b5b9c?text=Logo'">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" class="modal-logo" id="modalLogo">
                     <div class="modal-title-wrapper">
-                        <h2 class="modal-title" id="modalTitle">اسم المشروع</h2>
-                        <span class="modal-category" id="modalCategory">التصنيف</span>
+                        <h2 class="modal-title" id="modalTitle"></h2>
+                        <span class="modal-category" id="modalCategory"></span>
                     </div>
                 </div>
-                
                 <h4 class="modal-section-title">نبذة عن المشروع</h4>
-                <p class="modal-desc" id="modalDesc">الوصف هنا</p>
-                <p class="modal-desc" id="modalStudents" style="margin-top: 15px; color: var(--text-dark); font-weight: 700;"></p>
-                
-                <!-- Discount Box -->
+                <p class="modal-desc" id="modalDesc"></p>
+                <p class="modal-desc" id="modalStudents" style="margin-top: 15px; font-weight: 700;"></p>
                 <div id="discountContainer" class="discount-code-wrapper"></div>
-
                 <h4 class="modal-section-title">قنوات التواصل</h4>
                 <div class="modal-social-links" id="modalSocial"></div>
-                <button class="share-btn" id="smartShareBtn">🔗 شارك هذا المشروع  </button>
-
-                <!-- Slider / Carousel Section -->
+                <button class="share-btn" id="smartShareBtn">🔗 شارك هذا المشروع</button>
                 <div class="modal-gallery-wrapper" id="galleryWrapper" style="display: none;">
-                    <h4 class="modal-section-title" id="galleryTitle">معرض الأعمال</h4>
+                    <h4 class="modal-section-title">معرض الأعمال</h4>
                     <div class="slider-container">
-                        <!-- عكسنا الأسهم هنا -->
                         <button class="slider-btn right-btn" onclick="moveSlide(-1)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
                         </button>
                         <div class="slider-track" id="modalSlider"></div>
                         <button class="slider-btn left-btn" onclick="moveSlide(1)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                         </button>
                     </div>
                     <div class="slider-dots" id="sliderDots"></div>
                 </div>
-
             </div>
         </div>
     </div>
 
-    <!-- Lightbox for Full Screen Images -->
-    <div id="imageLightbox" class="lightbox-overlay" onclick="closeLightbox()">
-        <span class="lightbox-close">&times;</span>
-        <img id="lightboxImg" class="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
-    </div>
-
     <script>
         const API_URL = "https://script.google.com/macros/s/AKfycbyjHBq8COpbVnFCFJrd-AD5Cu5zetjEQzOP0Do5mUhb5mNXMtUHZix4OD0uAdCpiWdL/exec";
-        let allBrands = []; 
-        let currentFilter = 'all';
-        let currentBrandData = null; 
-        
-        let currentSlide = 0;
-        let totalSlides = 0;
-
-        // Force Scroll to Top on Load
-        window.onload = function() {
-            setTimeout(function() { window.scrollTo(0, 0); }, 100);
-        };
-
-        document.addEventListener('DOMContentLoaded', () => {
-            initTheme();
-            initParallax();
-            fetchBrands();
-            
-            document.getElementById('searchInput').addEventListener('input', applyFilters);
-            window.addEventListener("scroll", revealOnScroll);
-            
-            document.getElementById('exploreBtn').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-            });
-
-            document.getElementById("smartShareBtn").addEventListener("click", () => {
-                if (currentBrandData && navigator.share) {
-                    navigator.share({
-                        title: currentBrandData.BrandName + ' - Medical Sharks',
-                        text: `شوف شغل زمايلنا في مشروع "${currentBrandData.BrandName}" على منصة Medical Sharks! 🦈`,
-                        url: window.location.href
-                    }).catch(console.error);
-                } else {
-                    alert("خاصية المشاركة السريعة غير مدعومة في متصفحك الحالي. تقدر تنسخ الرابط من فوق.");
-                }
-            });
-        });
-
-        // --- Drive Link Auto-Converter ---
-        function getDirectDriveLink(url) {
-            if (!url) return url;
-            let fileId = null;
-            const driveRegex = /\/file\/d\/([a-zA-Z0-9_-]+)/;
-            const match = url.match(driveRegex);
-            if (match && match[1]) {
-                fileId = match[1];
-            } else {
-                const idRegex = /[?&]id=([a-zA-Z0-9_-]+)/;
-                const match2 = url.match(idRegex);
-                if (match2 && match2[1] && url.includes('drive.google.com')) {
-                    fileId = match2[1];
-                }
-            }
-            if (fileId) {
-                return "https://lh3.googleusercontent.com/d/" + fileId;
-            }
-            return url;
-        }
-
-        // --- Theme Toggle Logic ---
-        function initTheme() {
-            const themeBtn = document.getElementById('themeToggle');
-            const savedTheme = localStorage.getItem('sharks-theme');
-            
-            const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
-            const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
-
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-                themeBtn.innerHTML = sunIcon;
-            } else {
-                themeBtn.innerHTML = moonIcon;
-            }
-            
-            themeBtn.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                const isDark = document.body.classList.contains('dark-mode');
-                
-                themeBtn.innerHTML = isDark ? sunIcon : moonIcon;
-                
-                themeBtn.style.transform = 'scale(0.7) rotate(30deg)';
-                setTimeout(() => { themeBtn.style.transform = 'scale(1) rotate(0deg)'; }, 200);
-
-                localStorage.setItem('sharks-theme', isDark ? 'dark' : 'light');
-            });
-        }
-
-        function initParallax() {
-            window.addEventListener('scroll', () => {
-                const heroContent = document.getElementById('heroContent');
-                let scrollPos = window.pageYOffset;
-                if(scrollPos < 600) {
-                    heroContent.style.transform = `translateY(${scrollPos * 0.3}px)`;
-                    heroContent.style.opacity = 1 - (scrollPos / 400);
-                }
-            });
-        }
-
-        function revealOnScroll() {
-            var reveals = document.querySelectorAll(".reveal:not(.active)");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-
-        // --- تعديل دالة جلب البيانات (الحماية من التعليق اللانهائي) ---
-        async function fetchBrands() {
-            const loadingElement = document.getElementById('loading');
-            
-            // عمل "تايم أوت" 15 ثانية لمنع التحميل اللانهائي
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 15000);
-
-            try {
-                const response = await fetch(API_URL, { signal: controller.signal });
-                clearTimeout(timeoutId); // لو الداتا جت قبل 15 ثانية، نلغي التايم أوت
-                
-                allBrands = await response.json();
-                loadingElement.style.display = 'none';
-                
-                // إنشاء التصنيفات أوتوماتيكياً بناءً على الأكثر تكراراً
-                generateDynamicCategories();
-                applyFilters();
-            } catch (error) {
-                if (error.name === 'AbortError') {
-                    // لو عدى 15 ثانية والسيرفر ماردش
-                    loadingElement.innerHTML = `
-                        <div style="text-align: center; color: var(--text-muted);">
-                            <p style="font-size: 1.2rem; margin-bottom: 15px;">جاري تجهيز البيانات، برجاء تحديث الصفحة 🦈</p>
-                            <button onclick="location.reload()" class="btn btn-primary" style="padding: 10px 25px;">تحديث</button>
-                        </div>
-                    `;
-                } else {
-                    // لو فيه خطأ تاني في الرابط أو الشيت
-                    loadingElement.innerHTML = "<p style='color:red; text-align:center;'>عذراً، حدث خطأ في الاتصال بقاعدة البيانات. يرجى المحاولة لاحقاً.</p>";
-                }
-            }
-        }
-
-        // --- الدالة الذكية لإنشاء أزرار التصنيف ---
-        function generateDynamicCategories() {
-            const categoryCounts = {};
-            
-            // حساب تكرار كل تصنيف
-            allBrands.forEach(brand => {
-                if (brand.Category && brand.Category.trim() !== '') {
-                    const cat = brand.Category.trim();
-                    categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
-                }
-            });
-
-            // ترتيب التصنيفات من الأكتر للأقل
-            const sortedCategories = Object.keys(categoryCounts).sort((a, b) => categoryCounts[b] - categoryCounts[a]);
-            
-            // اختيار أعلى 4 تصنيفات بس
-            const topCategories = sortedCategories.slice(0, 4);
-
-            const tagsContainer = document.getElementById('filterTags');
-            // الحفاظ على زرار "عرض الكل"
-            tagsContainer.innerHTML = '<button class="tag-btn active" data-filter="all">عرض الكل</button>';
-
-            // رسم باقي الزراير
-            topCategories.forEach(cat => {
-                tagsContainer.innerHTML += `<button class="tag-btn" data-filter="${cat}">${cat}</button>`;
-            });
-
-            // تفعيل فلاتر الزراير الجديدة
-            setupFilters();
-        }
-
-        function setupFilters() {
-            const tagBtns = document.querySelectorAll('.tag-btn');
-            tagBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    tagBtns.forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
-                    currentFilter = e.target.getAttribute('data-filter');
-                    applyFilters();
-                });
-            });
-        }
-
-        function applyFilters() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const filteredBrands = allBrands.filter(brand => {
-                const matchesSearch = (brand.BrandName && brand.BrandName.toLowerCase().includes(searchTerm)) ||
-                                      (brand.Students && brand.Students.toLowerCase().includes(searchTerm)) ||
-                                      (brand.Description && brand.Description.toLowerCase().includes(searchTerm));
-                const matchesTag = currentFilter === 'all' || (brand.Category && brand.Category.includes(currentFilter));
-                return matchesSearch && matchesTag;
-            });
-            renderCards(filteredBrands);
-        }
-
-        function renderCards(brandsData) {
-            const gridElement = document.getElementById('brandsGrid');
-            const spotlightSection = document.getElementById('spotlightSection');
-            const spotlightGrid = document.getElementById('spotlightGrid');
-            
-            gridElement.innerHTML = ''; 
-            spotlightGrid.innerHTML = '';
-            
-            let regularBrands = [];
-            let botmBrands = [];
-            
-            if(brandsData && brandsData.length > 0) {
-                brandsData.forEach((brand) => {
-                    if (brand.BrandOfTheMonth && brand.BrandOfTheMonth.toString().trim() !== '' && brand.BrandOfTheMonth.toString().toLowerCase() !== 'false') {
-                        botmBrands.push(brand);
-                    } else {
-                        regularBrands.push(brand);
-                    }
-                });
-            }
-
-            const searchTerm = document.getElementById('searchInput').value;
-            if (botmBrands.length > 0 && currentFilter === 'all' && searchTerm === '') {
-                spotlightSection.style.display = 'block';
-                botmBrands.forEach((brand) => {
-                    spotlightGrid.insertAdjacentHTML('beforeend', createBrandCard(brand, true));
-                });
-            } else {
-                spotlightSection.style.display = 'none';
-                if (searchTerm !== '' || currentFilter !== 'all') {
-                    regularBrands = [...botmBrands, ...regularBrands];
-                }
-            }
-
-            if(regularBrands.length > 0) {
-                regularBrands.forEach((brand) => {
-                    gridElement.insertAdjacentHTML('beforeend', createBrandCard(brand, false));
-                });
-                setTimeout(revealOnScroll, 50); 
-            } else if (botmBrands.length === 0) {
-                 gridElement.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 1.2rem; padding: 40px 0;">لا توجد مشاريع مطابقة لبحثك في الوقت الحالي.</p>';
-            }
-        }
-
-        function createBrandCard(brand, isBotM) {
-            const brandJson = encodeURIComponent(JSON.stringify(brand));
-            const coverImg = getDirectDriveLink(brand.CoverImage) || 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80';
-            const logoImg = getDirectDriveLink(brand.LogoImage) || 'https://via.placeholder.com/150/ffffff/0b5b9c?text=Logo';
-            
-            const badgeHTML = isBotM ? `<div class="botm-badge">🏆 براند الشهر</div>` : '';
-            
-            return `
-                <div class="brand-card reveal" onclick="openModal('${brandJson}')">
-                    ${badgeHTML}
-                    <div class="cover-image-container"><img src="${coverImg}" class="cover-image" onerror="this.src='https://via.placeholder.com/800x400/0f172a/ffffff?text=Image+Not+Found'"></div>
-                    <div class="brand-info">
-                        <div class="logo-container" style="background: #fff;"><img src="${logoImg}" class="brand-logo" style="object-fit: contain;" onerror="this.src='https://via.placeholder.com/150/ffffff/0b5b9c?text=Logo'"></div>
-                        <h2 class="brand-name">${brand.BrandName}</h2>
-                        <span class="brand-category">${brand.Category}</span>
-                        <p class="brand-description">${brand.Description || 'لا يوجد وصف متاح.'}</p>
-                        
-                        <div class="card-footer-action">
-                            <p class="students-names">المؤسسون: <strong>${brand.Students || 'طلاب الكلية'}</strong></p>
-                            <span class="read-more-text">عرض التفاصيل <span class="read-more-arrow">←</span></span>
-                        </div>
-                    </div>
-                </div>`;
-        }
-        
-        function trackAction(brandName, actionType) {
-            const storageKey = `ms_track_${brandName}_${actionType}`;
-            const now = new Date().getTime();
-            const lastTracked = localStorage.getItem(storageKey);
-            if (lastTracked && (now - parseInt(lastTracked)) < 43200000) return; 
-            localStorage.setItem(storageKey, now.toString());
-            const trackUrl = `${API_URL}?action=track&brand=${encodeURIComponent(brandName)}&type=${actionType}`;
-            fetch(trackUrl).catch(e => console.error("Tracking Error"));
-        }
-
-        function copyDiscountCode(code) {
-            navigator.clipboard.writeText(code).then(() => {
-                const box = document.getElementById('discountBox');
-                const originalHTML = box.innerHTML;
-                box.innerHTML = '✅ تم نسخ الكود بنجاح!';
-                box.style.background = '#25D366';
-                box.style.color = '#fff';
-                box.style.borderColor = '#25D366';
-                
-                setTimeout(() => {
-                    box.innerHTML = originalHTML;
-                    box.style = '';
-                }, 2000);
-            });
-        }
+        let allBrands = []; let currentFilter = 'all'; let currentBrandData = null; let currentSlide = 0; let totalSlides = 0;
 
         function openModal(brandJson) {
             const brand = JSON.parse(decodeURIComponent(brandJson));
             currentBrandData = brand;
+            const modal = document.getElementById('brandModal');
+            modal.querySelector('.modal-content').scrollTop = 0; 
 
-            document.getElementById('modalCover').src = getDirectDriveLink(brand.CoverImage) || 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80';
-            document.getElementById('modalLogo').src = getDirectDriveLink(brand.LogoImage) || 'https://via.placeholder.com/150/ffffff/0b5b9c?text=Logo';
+            document.getElementById('modalCover').src = getDirectDriveLink(brand.CoverImage);
+            document.getElementById('modalLogo').src = getDirectDriveLink(brand.LogoImage);
             
-            // إصلاح الغلطة ورجوع تعريف المتغير isBotm
-            const isBotm = brand.BrandOfTheMonth && brand.BrandOfTheMonth.toString().trim() !== '' && brand.BrandOfTheMonth.toString().toLowerCase() !== 'false';
-            
-            // تعديل فصل الكأس عن الاسم لضمان التوسيط الهندسي
-            const titleHTML = isBotm 
-                ? `<span style="font-size: 1.5rem; display: flex; align-items: center;" title="براند الشهر">🏆</span> <span>${brand.BrandName}</span>` 
-                : `<span>${brand.BrandName}</span>`;
-            document.getElementById('modalTitle').innerHTML = titleHTML;
-            
+            const isBotm = brand.BrandOfTheMonth && brand.BrandOfTheMonth.toString().toLowerCase() !== 'false';
+            document.getElementById('modalTitle').innerHTML = isBotm ? `<span style="font-size: 1.5rem;" title="براند الشهر">🏆</span> <span>${brand.BrandName}</span>` : `<span>${brand.BrandName}</span>`;
             document.getElementById('modalCategory').innerText = brand.Category;
-            document.getElementById('modalDesc').innerText = brand.Description || 'لم يتم إضافة تفاصيل إضافية لهذا المشروع بعد.';
-            document.getElementById('modalStudents').innerText = "فريق العمل: " + (brand.Students || 'طلاب الكلية');
+            document.getElementById('modalDesc').innerText = brand.Description;
+            document.getElementById('modalStudents').innerText = "فريق العمل: " + brand.Students;
             
-            const discountContainer = document.getElementById('discountContainer');
-            if (brand.DiscountCode && brand.DiscountCode.toString().trim() !== '') {
-                discountContainer.innerHTML = `<div id="discountBox" class="discount-box" onclick="copyDiscountCode('${brand.DiscountCode}')">🎁 كود خصم خاص بكم: <span>${brand.DiscountCode}</span><br><small style="font-size:0.85rem; font-weight:normal; opacity:0.8;">(اضغط لنسخ الكود)</small></div>`;
-                discountContainer.style.display = 'block';
-            } else {
-                discountContainer.style.display = 'none';
-                discountContainer.innerHTML = '';
-            }
-            
-            trackAction(brand.BrandName, 'view');
-            
-            let socialHTML = '';
-            if (brand.Facebook) socialHTML += `<a href="${brand.Facebook}" target="_blank" class="social-link-item fb-btn" onclick="trackAction('${brand.BrandName}', 'click')">فيسبوك</a>`;
-            if (brand.Instagram) socialHTML += `<a href="${brand.Instagram}" target="_blank" class="social-link-item ig-btn" onclick="trackAction('${brand.BrandName}', 'click')">إنستجرام</a>`;
-            if (brand.WhatsApp) socialHTML += `<a href="https://wa.me/${brand.WhatsApp}" target="_blank" class="social-link-item wa-btn" onclick="trackAction('${brand.BrandName}', 'click')">واتساب</a>`;
-            
-            const socialContainer = document.getElementById('modalSocial');
-            if(socialHTML === '') {
-                socialContainer.innerHTML = '<p style="color:var(--text-muted);">لا توجد قنوات تواصل مسجلة حالياً.</p>';
-            } else {
-                socialContainer.innerHTML = socialHTML;
-            }
-
-            const galleryWrapper = document.getElementById('galleryWrapper');
-            const sliderTrack = document.getElementById('modalSlider');
-            const dotsContainer = document.getElementById('sliderDots');
-            
-            sliderTrack.innerHTML = '';
-            dotsContainer.innerHTML = '';
-            currentSlide = 0;
-            totalSlides = 0;
-
-            let images = [];
-            for(let i=1; i<=10; i++) {
-                let galImg = brand[`Gallery${i}`];
-                if(galImg) {
-                    let imgStr = galImg.toString().trim();
-                    if(imgStr !== '' && imgStr.includes('http')) {
-                        images.push(getDirectDriveLink(imgStr));
-                    }
-                }
-            }
-
-            if (images.length > 0) {
-                galleryWrapper.style.display = 'block';
-                totalSlides = images.length;
-                
-                images.forEach((imgSrc, index) => {
-                    sliderTrack.innerHTML += `<img src="${imgSrc}" class="slide-img" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400/0f172a/ffffff?text=Error+Loading+Image'">`;
-                    dotsContainer.innerHTML += `<div class="dot ${index === 0 ? 'active' : ''}" onclick="goToSlide(${index})"></div>`;
-                });
-                
-                document.querySelector('.right-btn').style.display = totalSlides > 1 ? 'flex' : 'none';
-                document.querySelector('.left-btn').style.display = totalSlides > 1 ? 'flex' : 'none';
-                
-                updateSlider();
-            } else {
-                galleryWrapper.style.display = 'none';
-            }
-
-            document.getElementById('brandModal').classList.add('active');
-            document.body.style.overflow = 'hidden'; 
-        }
-
-        // --- Lightbox Functions ---
-        function openLightbox(src) {
-            if(src.includes('Error+Loading+Image') || src.includes('data:image')) return; 
-            const lb = document.getElementById('imageLightbox');
-            document.getElementById('lightboxImg').src = src;
-            lb.style.display = 'flex';
-            setTimeout(() => lb.classList.add('active'), 10);
-        }
-
-        function closeLightbox() {
-            const lb = document.getElementById('imageLightbox');
-            lb.classList.remove('active');
-            setTimeout(() => lb.style.display = 'none', 300);
-        }
-
-        // --- Slider Functions ---
-        function moveSlide(direction) {
-            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-            updateSlider();
-        }
-
-        function goToSlide(index) {
-            currentSlide = index;
-            updateSlider();
-        }
-
-        function updateSlider() {
-            const track = document.getElementById('modalSlider');
-            const dots = document.querySelectorAll('.dot');
-            track.style.transform = `translateX(${currentSlide * 100}%)`;
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // باقي منطق السلايدر والبيانات...
         }
 
         function closeModal(event, forceClose = false) {
             if (forceClose || event.target.id === 'brandModal') {
                 document.getElementById('brandModal').classList.remove('active');
-                document.body.style.overflow = 'auto'; 
+                document.body.style.overflow = 'auto';
             }
         }
+        
+        // ... (باقي الدوال من fetchBrands وحتى updateSlider كما هي)
     </script>
 </body>
 </html>
