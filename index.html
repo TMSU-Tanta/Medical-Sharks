@@ -93,10 +93,10 @@
         }
 
         /* ===== التحكم الدقيق في مقاس كل لوجو لتوحيدهم ===== */
-        .logo-img.faculty { transform: scale(1.15); } 
-        .logo-img.union   { transform: scale(1.15); } 
-        .logo-img.family  { transform: scale(0.95); } 
-        .logo-img.social  { transform: scale(1.05); } 
+        .logo-img.faculty { transform: scale(1.28); } 
+        .logo-img.union   { transform: scale(1.25); } 
+        .logo-img.family  { transform: scale(1.25); } 
+        .logo-img.social  { transform: scale(0.95); } 
 
         
         .nav-title { font-family: 'Cairo', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--primary); letter-spacing: 1px; flex-grow: 1; text-align: center; }
@@ -204,8 +204,9 @@
         .modal-content { background: var(--glass-bg); border: 1px solid var(--glass-border); width: 100%; max-width: 900px; max-height: 90vh; border-radius: 20px; overflow-y: auto; position: relative; transform: translateY(30px) scale(0.98); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
         .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
         
-        /* التعديل: تظبيط حرف الـ X عشان يبقى متسنتر بالملي */
-        .close-btn { position: absolute; top: 20px; right: 25px; font-size: 2rem; color: #fff; cursor: pointer; z-index: 10; background: rgba(0,0,0,0.5); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.2); transition: 0.3s; line-height: 1; padding-bottom: 4px; }
+        /* التعديل الجذري لزرار الـ X باستخدام SVG و Flexbox لتوسيط هندسي دقيق 100% */
+        .close-btn { position: absolute; top: 20px; right: 25px; color: #fff; cursor: pointer; z-index: 10; background: rgba(0,0,0,0.5); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.2); transition: 0.3s; padding: 0; }
+        .close-btn svg { width: 22px; height: 22px; }
         .close-btn:hover { background: var(--primary); border-color: var(--primary); color: var(--btn-text); }
         
         .modal-header { position: relative; height: 350px; }
@@ -215,9 +216,11 @@
         .modal-body { padding: 0 50px 50px; position: relative; margin-top: -60px; z-index: 2; }
         .modal-header-flex { display: flex; gap: 25px; align-items: flex-end; margin-bottom: 30px; }
         .modal-logo { width: 120px; height: 120px; border-radius: 16px; border: 4px solid var(--glass-bg); background: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.1); object-fit: contain; }
-        .modal-title-wrapper { padding-bottom: 10px; }
-        .modal-title { font-family: 'Cairo', sans-serif; font-size: 2.5rem; font-weight: 900; margin-bottom: 5px; color: var(--primary); line-height: 1; display: flex; align-items: center; gap: 10px; }
-        .modal-category { color: var(--accent); font-size: 1rem; font-weight: 700; letter-spacing: 1px; }
+        
+        /* التعديل الجذري لعنوان المشروع والتصنيف لفصلهم عن الكأس وتوسيطهم */
+        .modal-title-wrapper { padding-bottom: 10px; display: flex; flex-direction: column; align-items: flex-start; width: 100%; }
+        .modal-title { font-family: 'Cairo', sans-serif; font-size: 2.5rem; font-weight: 900; margin-bottom: 5px; color: var(--primary); line-height: 1; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .modal-category { color: var(--accent); font-size: 1rem; font-weight: 700; letter-spacing: 0; }
         
         .modal-section-title { font-family: 'Cairo', sans-serif; font-size: 1.4rem; color: var(--text-dark); margin: 30px 0 15px; padding-bottom: 10px; border-bottom: 1px solid var(--glass-border); }
         .modal-desc { font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; }
@@ -297,17 +300,18 @@
             .hero-btns { flex-direction: column; width: 100%; padding: 0 20px; }
             .btn { width: 100%; }
             
-            /* التعديل: تظبيط مقاس وتوسيط زرار الخروج (X) في الموبايل */
-            .close-btn { top: 15px; right: 15px; width: 38px; height: 38px; font-size: 1.6rem; padding-bottom: 3px; }
+            /* تعديل الأيقونة في الموبايل */
+            .close-btn { top: 15px; right: 15px; width: 38px; height: 38px; }
+            .close-btn svg { width: 18px; height: 18px; }
             
             .modal-header { height: 200px; }
             .modal-logo { width: 90px; height: 90px; margin-top: -45px; border-width: 3px; }
             .modal-header-flex { flex-direction: column; align-items: center; text-align: center; gap: 15px; margin-bottom: 20px; }
             
-            /* التعديل: التوسيط الإجباري لعنوان المشروع والتصنيف على الموبايل */
-            .modal-title-wrapper { width: 100%; display: flex; flex-direction: column; align-items: center; }
-            .modal-title { justify-content: center; font-size: 1.8rem; }
-            .modal-category { display: block; text-align: center; margin-top: 5px; }
+            /* التعديل الإجباري لتوسيط الاسم والتصنيف */
+            .modal-title-wrapper { align-items: center; text-align: center; }
+            .modal-title { justify-content: center; font-size: 1.8rem; text-align: center; width: 100%; }
+            .modal-category { display: block; text-align: center; margin-top: 5px; width: 100%; }
             
             .modal-body { padding: 0 20px 30px; margin-top: 0; }
             .brands-grid { grid-template-columns: 1fr; }
@@ -409,7 +413,10 @@
     <!-- Premium Modal Structure -->
     <div class="modal-overlay" id="brandModal" onclick="closeModal(event)">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal(event, true)">&times;</span>
+            <!-- استخدام SVG بدلاً من النص لضمان التوسيط 100% -->
+            <span class="close-btn" onclick="closeModal(event, true)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </span>
             <div class="modal-header">
                 <!-- Using 1x1 transparent pixel to prevent browser hanging on empty src -->
                 <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Cover" class="modal-cover" id="modalCover" onerror="this.src='https://via.placeholder.com/800x400/0f172a/ffffff?text=Image+Not+Found'">
@@ -762,10 +769,10 @@
             document.getElementById('modalCover').src = getDirectDriveLink(brand.CoverImage) || 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80';
             document.getElementById('modalLogo').src = getDirectDriveLink(brand.LogoImage) || 'https://via.placeholder.com/150/ffffff/0b5b9c?text=Logo';
             
-            const isBotm = brand.BrandOfTheMonth && brand.BrandOfTheMonth.toString().trim() !== '' && brand.BrandOfTheMonth.toString().toLowerCase() !== 'false';
+            // تعديل فصل الكأس عن الاسم لضمان التوسيط الهندسي
             const titleHTML = isBotm 
-                ? `${brand.BrandName} <span style="font-size: 1.5rem;" title="براند الشهر">🏆</span>` 
-                : brand.BrandName;
+                ? `<span style="font-size: 1.5rem; display: flex; align-items: center;" title="براند الشهر">🏆</span> <span>${brand.BrandName}</span>` 
+                : `<span>${brand.BrandName}</span>`;
             document.getElementById('modalTitle').innerHTML = titleHTML;
             
             document.getElementById('modalCategory').innerText = brand.Category;
