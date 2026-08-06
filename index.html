@@ -769,6 +769,9 @@
             document.getElementById('modalCover').src = getDirectDriveLink(brand.CoverImage) || 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80';
             document.getElementById('modalLogo').src = getDirectDriveLink(brand.LogoImage) || 'https://via.placeholder.com/150/ffffff/0b5b9c?text=Logo';
             
+            // إصلاح الغلطة ورجوع تعريف المتغير isBotm
+            const isBotm = brand.BrandOfTheMonth && brand.BrandOfTheMonth.toString().trim() !== '' && brand.BrandOfTheMonth.toString().toLowerCase() !== 'false';
+            
             // تعديل فصل الكأس عن الاسم لضمان التوسيط الهندسي
             const titleHTML = isBotm 
                 ? `<span style="font-size: 1.5rem; display: flex; align-items: center;" title="براند الشهر">🏆</span> <span>${brand.BrandName}</span>` 
