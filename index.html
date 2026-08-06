@@ -93,7 +93,7 @@
         }
 
         /* ===== التحكم الدقيق في مقاس كل لوجو لتوحيدهم ===== */
-        .logo-img.faculty { transform: scale(1.28); } 
+        .logo-img.faculty { transform: scale(1.25); } 
         .logo-img.union   { transform: scale(1.25); } 
         .logo-img.family  { transform: scale(1.25); } 
         .logo-img.social  { transform: scale(0.95); } 
@@ -204,7 +204,8 @@
         .modal-content { background: var(--glass-bg); border: 1px solid var(--glass-border); width: 100%; max-width: 900px; max-height: 90vh; border-radius: 20px; overflow-y: auto; position: relative; transform: translateY(30px) scale(0.98); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
         .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
         
-        .close-btn { position: absolute; top: 20px; right: 25px; font-size: 2rem; color: #fff; cursor: pointer; z-index: 10; background: rgba(0,0,0,0.5); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.2); transition: 0.3s; }
+        /* التعديل: تظبيط حرف الـ X عشان يبقى متسنتر بالملي */
+        .close-btn { position: absolute; top: 20px; right: 25px; font-size: 2rem; color: #fff; cursor: pointer; z-index: 10; background: rgba(0,0,0,0.5); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.2); transition: 0.3s; line-height: 1; padding-bottom: 4px; }
         .close-btn:hover { background: var(--primary); border-color: var(--primary); color: var(--btn-text); }
         
         .modal-header { position: relative; height: 350px; }
@@ -290,15 +291,24 @@
             .hero { padding: 40px 15px 50px; }
             .hero-main-title { font-size: 2.3rem; line-height: 1.5; }
             .hero-subtitle { font-size: 1.15rem; line-height: 1.6; }
-            .supervision-badge { font-size: 0.9rem; padding: 6px 18px; margin-bottom: 25px; }
+            .supervision-badge { font-size: 0.95rem; padding: 6px 18px; margin-bottom: 25px; }
             .hero-desc { font-size: 1.05rem; padding: 0 10px; }
             
             .hero-btns { flex-direction: column; width: 100%; padding: 0 20px; }
             .btn { width: 100%; }
+            
+            /* التعديل: تظبيط مقاس وتوسيط زرار الخروج (X) في الموبايل */
+            .close-btn { top: 15px; right: 15px; width: 38px; height: 38px; font-size: 1.6rem; padding-bottom: 3px; }
+            
             .modal-header { height: 200px; }
             .modal-logo { width: 90px; height: 90px; margin-top: -45px; border-width: 3px; }
             .modal-header-flex { flex-direction: column; align-items: center; text-align: center; gap: 15px; margin-bottom: 20px; }
+            
+            /* التعديل: التوسيط الإجباري لعنوان المشروع والتصنيف على الموبايل */
+            .modal-title-wrapper { width: 100%; display: flex; flex-direction: column; align-items: center; }
             .modal-title { justify-content: center; font-size: 1.8rem; }
+            .modal-category { display: block; text-align: center; margin-top: 5px; }
+            
             .modal-body { padding: 0 20px 30px; margin-top: 0; }
             .brands-grid { grid-template-columns: 1fr; }
             .search-input { font-size: 1rem; padding: 15px 20px; }
@@ -342,13 +352,13 @@
             <h1 class="hero-main-title">مرحباً بكم في <br> <bdi>Medical Sharks</bdi> 🦈🩺</h1>
             
             <h2 class="hero-subtitle">المنصة الرسمية لريادة الأعمال بطلاب كلية الطب - جامعة طنطا</h2>
-                       
+            
             <p class="hero-desc">
                 نُسلط الضوء على العلامات التجارية والمبادرات الواعدة التي يقودها أطباء المستقبل لنصنع بيئة متكاملة تُعزز التواصل وتدعم الفكر الريادي وتحول الأفكار الطبية والإبداعية إلى مشاريع ناجحة داخل الحرم الجامعي وخارجه.
             </p>
             
             <div class="hero-btns">
-                <a href="#directory" class="btn btn-primary" id="exploreBtn">تصفح المشاريع</a>
+                <a href="#directory" class="btn btn-primary" id="exploreBtn">تصفح الدليل</a>
                 <!-- لينك فورم التسجيل -->
                 <a href="https://forms.gle/AfWX4H6XoUfS6ZBF6" target="_blank" class="btn btn-outline">تسجيل مشروع جديد</a>
             </div>
@@ -365,6 +375,7 @@
 
     <!-- Brands Directory -->
     <div class="directory-container">
+        <!-- شاشة التحميل مع الدالة الجديدة اللي بتعالج التأخير -->
         <div id="loading" class="loader-container">
             <div class="spinner"></div>
         </div>
@@ -424,13 +435,13 @@
                 <div class="modal-gallery-wrapper" id="galleryWrapper" style="display: none;">
                     <h4 class="modal-section-title" id="galleryTitle">معرض الأعمال</h4>
                     <div class="slider-container">
-                        <!-- تم تبديل الأسهم بشكل نهائي -->
+                        <!-- عكسنا الأسهم هنا -->
                         <button class="slider-btn right-btn" onclick="moveSlide(-1)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
                         </button>
                         <div class="slider-track" id="modalSlider"></div>
                         <button class="slider-btn left-btn" onclick="moveSlide(1)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                         </button>
                     </div>
                     <div class="slider-dots" id="sliderDots"></div>
@@ -557,10 +568,18 @@
             }
         }
 
+        // --- تعديل دالة جلب البيانات (الحماية من التعليق اللانهائي) ---
         async function fetchBrands() {
             const loadingElement = document.getElementById('loading');
+            
+            // عمل "تايم أوت" 15 ثانية لمنع التحميل اللانهائي
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 15000);
+
             try {
-                const response = await fetch(API_URL);
+                const response = await fetch(API_URL, { signal: controller.signal });
+                clearTimeout(timeoutId); // لو الداتا جت قبل 15 ثانية، نلغي التايم أوت
+                
                 allBrands = await response.json();
                 loadingElement.style.display = 'none';
                 
@@ -568,7 +587,18 @@
                 generateDynamicCategories();
                 applyFilters();
             } catch (error) {
-                loadingElement.innerHTML = "<p style='color:red;'>عذراً، حدث خطأ أثناء تحميل البيانات من قاعدة البيانات.</p>";
+                if (error.name === 'AbortError') {
+                    // لو عدى 15 ثانية والسيرفر ماردش
+                    loadingElement.innerHTML = `
+                        <div style="text-align: center; color: var(--text-muted);">
+                            <p style="font-size: 1.2rem; margin-bottom: 15px;">جاري تجهيز البيانات، برجاء تحديث الصفحة 🦈</p>
+                            <button onclick="location.reload()" class="btn btn-primary" style="padding: 10px 25px;">تحديث</button>
+                        </div>
+                    `;
+                } else {
+                    // لو فيه خطأ تاني في الرابط أو الشيت
+                    loadingElement.innerHTML = "<p style='color:red; text-align:center;'>عذراً، حدث خطأ في الاتصال بقاعدة البيانات. يرجى المحاولة لاحقاً.</p>";
+                }
             }
         }
 
