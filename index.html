@@ -4,44 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medical Sharks | المنصة الرسمية لمشاريع طب طنطا</title>
-    
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="المنصة الرسمية لريادة الأعمال بطلاب كلية الطب - جامعة طنطا. نسلط الضوء على العلامات التجارية والمبادرات الواعدة التي يقودها أطباء المستقبل">
+    <meta name="keywords" content="Medical Sharks, طب طنطا, مشاريع طبية, ريادة أعمال, اتحاد طلاب طب, كلية الطب طنطا, مبادرات طلابية">
+    <meta name="author" content="اتحاد طلاب كلية الطب - جامعة طنطا">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://medical-sharks.com">
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#0b5b9c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Medical Sharks">
+    <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1XPTpqy_pgQpZmfm6hmWDMemB0jHKy4uS">
+    <link rel="manifest" href="manifest.json">
+
     <!-- إضافة أيقونة التاب (Favicon) لمنع المتصفح من التحميل المستمر -->
     <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1XPTpqy_pgQpZmfm6hmWDMemB0jHKy4uS">
 
     <!-- Google Fonts: Cairo for Headings, Tajawal for Body -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* ===== Soft & Professional Variables (Light Mode Default) ===== */
+        /* ===== Soft & Professional Variables ===== */
         :root {
             --primary: #0b5b9c;
+            --primary-light: #1a73e8;
+            --primary-dark: #083d63;
             --secondary: #1a73e8;
-            --accent: #d97706; /* Soft Vintage Gold */
+            --accent: #d97706;
+            --accent-light: #fbbf24;
             --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.4);
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
             --text-dark: #1e293b;
             --text-muted: #64748b;
-            --shadow-color: rgba(0, 0, 0, 0.08);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
             --btn-text: #ffffff;
-            --botm-glow: 0 0 20px rgba(217, 119, 6, 0.4);
+            --botm-glow: 0 0 30px rgba(217, 119, 6, 0.5), 0 0 60px rgba(217, 119, 6, 0.2);
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* ===== Cinematic Dark Mode ===== */
+        /* ===== Enhanced Dark Mode (Golden Yellow) ===== */
         body.dark-mode {
-            --primary: #f59e0b; 
+            --primary: #f59e0b;
+            --primary-light: #fbbf24;
+            --primary-dark: #d97706;
             --secondary: #d97706;
-            --accent: #3b82f6; 
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
-            --glass-bg: rgba(15, 23, 42, 0.75);
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --card-bg: #1e293b;
+            --card-border: #334155;
             --text-dark: #f8fafc;
             --text-muted: #cbd5e1;
-            --shadow-color: rgba(0, 0, 0, 0.3);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.6);
             --btn-text: #0f172a;
-            --botm-glow: 0 0 25px rgba(245, 158, 11, 0.3);
+            --botm-glow: 0 0 25px rgba(245, 158, 11, 0.4), 0 0 50px rgba(245, 158, 11, 0.2);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
 
         /* ===== Scrollbar ===== */
         ::-webkit-scrollbar { width: 8px; }
@@ -54,7 +89,6 @@
             background: var(--bg-gradient);
             color: var(--text-dark);
             min-height: 100vh;
-            overflow-x: hidden;
             transition: background 0.5s ease, color 0.5s ease;
         }
 
@@ -69,11 +103,14 @@
         /* ===== Navbar ===== */
         .navbar {
             position: sticky; top: 0; z-index: 100;
-            background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--glass-border);
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--card-border);
             padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 4px 30px var(--shadow-color);
-            transition: all 0.5s ease;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+        }
+        .navbar:hover {
+            box-shadow: var(--shadow-lg);
         }
         
         .nav-logos { display: flex; align-items: center; gap: 12px; }
@@ -142,52 +179,191 @@
         .btn-outline:hover { background: var(--primary); color: var(--btn-text); }
         .hero-btns { display: flex; gap: 15px; justify-content: center; }
 
+        /* ===== Stats Counter ===== */
+        .stats-container { max-width: 1100px; margin: 0 auto 60px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
+        .stat-card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--card-bg) 100%);
+            border: 2px solid var(--card-border);
+            border-radius: 16px; padding: 30px;
+            text-align: center;
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-md);
+            position: relative; overflow: hidden;
+        }
+        .stat-card::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+        }
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-xl);
+        }
+        .stat-number {
+            font-family: 'Cairo', sans-serif; font-size: 3rem;
+            font-weight: 900; color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .stat-label { color: var(--text-muted); font-weight: 700; font-size: 1.05rem; }
+
         /* ===== Search & Filters ===== */
         .search-container { max-width: 800px; margin: 0 auto 30px; padding: 0 20px; }
-        .search-input { width: 100%; padding: 18px 25px; border-radius: 12px; border: 1px solid var(--glass-border); background: var(--glass-bg); color: var(--text-dark); font-family: 'Tajawal', sans-serif; font-size: 1.1rem; box-shadow: 0 4px 15px var(--shadow-color); transition: all 0.3s ease; outline: none; }
-        .search-input:focus { border-color: var(--primary); }
+        .search-input {
+            width: 100%; padding: 18px 25px; border-radius: 12px;
+            border: 2px solid var(--card-border); background: var(--card-bg);
+            color: var(--text-dark); font-family: 'Tajawal', sans-serif; font-size: 1.1rem;
+            box-shadow: var(--shadow-sm); transition: all var(--transition-base); outline: none;
+        }
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md), 0 0 0 3px rgba(11, 91, 156, 0.1);
+            transform: translateY(-2px);
+        }
 
         .tags-container { max-width: 900px; margin: 0 auto 60px; padding: 0 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-        .tag-btn { padding: 8px 24px; border-radius: 30px; border: 1px solid var(--primary); background: transparent; color: var(--text-dark); cursor: pointer; transition: 0.3s; font-family: 'Tajawal', sans-serif; font-weight: 600; font-size: 1rem; }
-        .tag-btn:hover { background: var(--glass-bg); }
-        .tag-btn.active { background: var(--primary); color: var(--btn-text); border-color: var(--primary); }
+        .tag-btn {
+            padding: 10px 26px; border-radius: 30px;
+            border: 2px solid var(--card-border); background: var(--card-bg);
+            color: var(--text-dark); cursor: pointer;
+            transition: all var(--transition-base);
+            font-family: 'Tajawal', sans-serif; font-weight: 600; font-size: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .tag-btn:hover {
+            background: var(--primary);
+            color: var(--btn-text);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .tag-btn.active {
+            background: var(--primary);
+            color: var(--btn-text);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
 
         /* ===== Brands Directory ===== */
         .directory-container { max-width: 1300px; margin: 0 auto; padding: 0 20px 100px; }
-        
+
         .spotlight-section { margin-bottom: 60px; }
         .spotlight-title { font-family: 'Cairo', sans-serif; color: var(--primary); text-align: center; margin-bottom: 25px; font-size: 2.2rem; display: flex; justify-content: center; align-items: center; gap: 10px; font-weight: 900; }
-        
-        .brands-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 30px; }
-        .spotlight-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; }
-        .spotlight-grid .brand-card { max-width: 450px; width: 100%; border: 2px solid var(--primary); box-shadow: var(--botm-glow); }
-        
-        /* Brand Card */
-        .brand-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; cursor: pointer; position: relative; box-shadow: 0 10px 30px var(--shadow-color); }
-        .brand-card:hover { transform: translateY(-10px); border-color: var(--primary); }
-        
-        .botm-badge { position: absolute; top: 15px; right: 15px; background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; padding: 5px 15px; border-radius: 20px; font-family: 'Cairo', sans-serif; font-size: 0.9rem; font-weight: 800; z-index: 20; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
-        .cover-image-container { height: 220px; width: 100%; position: relative; overflow: hidden; }
-        .cover-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
-        .brand-card:hover .cover-image { transform: scale(1.05); }
-        .cover-image-container::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 60%; background: linear-gradient(to top, var(--glass-bg), transparent); }
+        /* Grid Views */
+        .brands-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 30px; }
         
-        .brand-info { padding: 0 30px 30px; position: relative; flex-grow: 1; display: flex; flex-direction: column; }
-        .logo-container { width: 85px; height: 85px; border-radius: 12px; background: #fff; padding: 4px; position: absolute; top: -42px; left: 30px; border: 1px solid var(--glass-border); z-index: 10; box-shadow: 0 8px 20px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; overflow: hidden; }
-        .brand-logo { width: 100%; height: 100%; border-radius: 8px; object-fit: contain; }
-        
-        .brand-name { font-family: 'Cairo', sans-serif; font-size: 1.6rem; font-weight: 800; margin-top: 55px; margin-bottom: 5px; color: var(--primary); }
-        .brand-category { font-size: 0.9rem; color: var(--accent); font-weight: 700; margin-bottom: 15px; display: block; }
-        .brand-description { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        
+        .spotlight-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; }
+        .spotlight-grid .brand-card {
+            max-width: 450px; width: 100%;
+            border: 3px solid var(--primary);
+            box-shadow: var(--botm-glow), var(--shadow-xl);
+        }
+
+        /* Brand Card */
+        .brand-card {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all var(--transition-base);
+            display: flex; flex-direction: column;
+            cursor: pointer; position: relative;
+            box-shadow: var(--shadow-md);
+        }
+        .brand-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-xl), 0 0 0 4px rgba(var(--primary), 0.1);
+        }
+        .brand-card:active {
+            transform: translateY(-8px) scale(1.01);
+        }
+
+        .botm-badge {
+            position: absolute; top: 15px; right: 15px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: #fff; padding: 8px 18px; border-radius: 25px;
+            font-family: 'Cairo', sans-serif; font-size: 0.9rem; font-weight: 800;
+            z-index: 20; box-shadow: var(--shadow-lg);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cover-image-container {
+            height: 220px; width: 100%; position: relative;
+            overflow: hidden; background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+        }
+        .cover-image {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .brand-card:hover .cover-image { transform: scale(1.1) rotate(2deg); }
+        .cover-image-container::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 100%; height: 70%;
+            background: linear-gradient(to top, var(--card-bg) 0%, transparent 100%);
+        }
+
+        .brand-info {
+            padding: 0 30px 30px; position: relative;
+            flex-grow: 1; display: flex; flex-direction: column;
+        }
+        .logo-container {
+            width: 90px; height: 90px; border-radius: 16px;
+            background: #ffffff; padding: 6px;
+            position: absolute; top: -45px; left: 30px;
+            border: 3px solid var(--card-bg); z-index: 10;
+            box-shadow: var(--shadow-lg);
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden; transition: all var(--transition-base);
+        }
+        .brand-card:hover .logo-container {
+            transform: rotate(-5deg) scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+        .brand-logo {
+            width: 100%; height: 100%;
+            border-radius: 12px; object-fit: contain;
+        }
+
+        .brand-name {
+            font-family: 'Cairo', sans-serif; font-size: 1.7rem;
+            font-weight: 800; margin-top: 60px; margin-bottom: 8px;
+            color: var(--primary); transition: color var(--transition-base);
+        }
+        .brand-card:hover .brand-name { color: var(--primary-light); }
+
+        .brand-category {
+            font-size: 0.95rem; color: var(--accent);
+            font-weight: 700; margin-bottom: 15px;
+            display: inline-block; padding: 4px 12px;
+            background: rgba(217, 119, 6, 0.1);
+            border-radius: 6px;
+        }
+        .brand-description {
+            font-size: 0.98rem; color: var(--text-muted);
+            line-height: 1.8; margin-bottom: 20px; flex-grow: 1;
+            display: -webkit-box; -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical; overflow: hidden;
+        }
+
         /* ===== تعديلات الكارد فوتر (عرض التفاصيل) ===== */
         .card-footer-action {
             display: flex; justify-content: space-between; align-items: center;
-            border-top: 1px solid var(--glass-border); padding-top: 15px; margin-top: auto;
+            border-top: 2px solid var(--card-border);
+            padding-top: 15px; margin-top: auto;
         }
-        .students-names { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; margin: 0; }
-        .students-names strong { color: var(--primary); font-weight: 700; }
+        .students-names {
+            font-size: 0.88rem; color: var(--text-muted);
+            font-weight: 500; margin: 0;
+        }
+        .students-names strong {
+            color: var(--primary); font-weight: 700;
+        }
         
         .read-more-text {
             font-size: 0.9rem; font-family: 'Cairo', sans-serif; font-weight: 800;
@@ -199,79 +375,251 @@
         .brand-card:hover .read-more-arrow { transform: translateX(-5px); }
 
         /* ===== Modal ===== */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.4s ease; }
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; visibility: hidden;
+            transition: all 0.4s ease;
+        }
         .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-content { background: var(--glass-bg); border: 1px solid var(--glass-border); width: 100%; max-width: 900px; max-height: 90vh; border-radius: 20px; overflow-y: auto; position: relative; transform: translateY(30px) scale(0.98); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
+        .modal-content {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            width: 100%; max-width: 900px; max-height: 90vh;
+            border-radius: 24px; overflow-y: auto; position: relative;
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: var(--shadow-xl);
+            overscroll-behavior-y: contain; /* حماية السحب في الموبايل */
+            -webkit-overflow-scrolling: touch;
+        }
         .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
-        
-        /* التعديل الجذري لزرار الـ X باستخدام SVG و Flexbox لتوسيط هندسي دقيق 100% */
-        .close-btn { position: absolute; top: 20px; right: 25px; color: #fff; cursor: pointer; z-index: 10; background: rgba(0,0,0,0.5); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.2); transition: 0.3s; padding: 0; }
-        .close-btn svg { width: 22px; height: 22px; }
-        .close-btn:hover { background: var(--primary); border-color: var(--primary); color: var(--btn-text); }
-        
-        .modal-header { position: relative; height: 350px; }
+
+        .close-btn {
+            position: absolute; top: 20px; right: 25px;
+            color: #fff; cursor: pointer; z-index: 10;
+            background: rgba(0,0,0,0.6);
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all var(--transition-base); padding: 0;
+        }
+        .close-btn svg { width: 24px; height: 24px; }
+        .close-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal-header { position: relative; height: 350px; border-radius: 24px 24px 0 0; overflow: hidden; }
         .modal-cover { width: 100%; height: 100%; object-fit: cover; }
-        .modal-header::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 80%; background: linear-gradient(to top, var(--glass-bg), transparent); }
-        
+        .modal-header::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 100%; height: 80%;
+            background: linear-gradient(to top, var(--card-bg) 0%, transparent 100%);
+        }
+
         .modal-body { padding: 0 50px 50px; position: relative; margin-top: -60px; z-index: 2; }
         .modal-header-flex { display: flex; gap: 25px; align-items: flex-end; margin-bottom: 30px; }
-        .modal-logo { width: 120px; height: 120px; border-radius: 16px; border: 4px solid var(--glass-bg); background: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.1); object-fit: contain; }
-        
-        /* التعديل الجذري لعنوان المشروع والتصنيف لفصلهم عن الكأس وتوسيطهم */
+        .modal-logo {
+            width: 130px; height: 130px; border-radius: 20px;
+            border: 4px solid var(--card-bg); background: #fff;
+            box-shadow: var(--shadow-xl);
+            object-fit: contain;
+            transition: all var(--transition-base);
+        }
+        .modal-logo:hover { transform: scale(1.05) rotate(-3deg); }
+
         .modal-title-wrapper { padding-bottom: 10px; display: flex; flex-direction: column; align-items: flex-start; width: 100%; }
         .modal-title { font-family: 'Cairo', sans-serif; font-size: 2.5rem; font-weight: 900; margin-bottom: 5px; color: var(--primary); line-height: 1; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         .modal-category { color: var(--accent); font-size: 1rem; font-weight: 700; letter-spacing: 0; }
         
-        .modal-section-title { font-family: 'Cairo', sans-serif; font-size: 1.4rem; color: var(--text-dark); margin: 30px 0 15px; padding-bottom: 10px; border-bottom: 1px solid var(--glass-border); }
-        .modal-desc { font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; }
-        
-        /* Discount Box */
-        .discount-code-wrapper { margin-top: 20px; display: none; }
-        .discount-box { background: rgba(217, 119, 6, 0.1); border: 2px dashed var(--primary); color: var(--primary); padding: 15px; border-radius: 8px; text-align: center; font-family: 'Cairo', sans-serif; font-weight: 800; font-size: 1.2rem; cursor: pointer; transition: 0.3s; width: 100%; }
-        .discount-box span { color: var(--accent); letter-spacing: 2px; font-size: 1.4rem; margin: 0 10px; }
-        .discount-box:hover { background: var(--primary); color: var(--btn-text); border-style: solid; }
+        .modal-section-title {
+            font-family: 'Cairo', sans-serif; font-size: 1.5rem;
+            color: var(--text-dark); margin: 35px 0 18px;
+            padding-bottom: 12px; border-bottom: 3px solid var(--primary);
+            position: relative;
+        }
+        .modal-section-title::after {
+            content: ''; position: absolute; bottom: -3px; left: 0;
+            width: 60px; height: 3px; background: var(--accent);
+        }
+        .modal-desc { font-size: 1.15rem; color: var(--text-muted); line-height: 1.9; }
+
+        /* Discount Box - Enhanced */
+        .discount-code-wrapper { margin-top: 25px; display: none; }
+        .discount-box {
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+            border: 3px dashed var(--primary);
+            color: var(--primary); padding: 20px;
+            border-radius: 12px; text-align: center;
+            font-family: 'Cairo', sans-serif; font-weight: 800;
+            font-size: 1.3rem; cursor: pointer;
+            transition: all var(--transition-base); width: 100%;
+            box-shadow: var(--shadow-sm);
+        }
+        .discount-box span {
+            color: var(--accent); letter-spacing: 3px;
+            font-size: 1.6rem; margin: 0 12px;
+            display: inline-block;
+        }
+        .discount-box:hover {
+            background: var(--primary);
+            color: var(--btn-text);
+            border-style: solid;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
         .discount-box:hover span { color: var(--btn-text); }
 
-        /* Social Links */
-        .modal-social-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 25px; }
-        .social-link-item { display: flex; align-items: center; justify-content: center; padding: 14px; border-radius: 8px; color: white; text-decoration: none; font-weight: 700; font-family: 'Cairo', sans-serif; transition: 0.3s; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .social-link-item:hover { filter: brightness(1.1); transform: translateY(-3px); }
-        .fb-btn { background: #1877F2; }
-        .ig-btn { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
-        .wa-btn { background: #25D366; color: #fff; }
+        /* Social Links - Enhanced */
+        .modal-social-links {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px; margin-top: 25px;
+        }
+        .social-link-item {
+            display: flex; align-items: center; justify-content: center;
+            padding: 16px; border-radius: 12px;
+            color: white; text-decoration: none;
+            font-weight: 700; font-family: 'Cairo', sans-serif;
+            transition: all var(--transition-base);
+            cursor: pointer; box-shadow: var(--shadow-md);
+            font-size: 1.05rem;
+        }
+        .social-link-item:hover {
+            filter: brightness(1.15);
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: var(--shadow-lg);
+        }
+        .fb-btn { background: linear-gradient(135deg, #1877F2 0%, #0c5dbf 100%); }
+        .ig-btn { background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .wa-btn { background: linear-gradient(135deg, #25D366 0%, #1ea952 100%); }
 
-        .share-btn { width: 100%; margin-top: 15px; background: transparent; color: var(--primary); border: 2px dashed var(--primary); padding: 14px; border-radius: 8px; font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px;}
-        .share-btn:hover { background: var(--primary); color: var(--btn-text); }
+        .share-btn {
+            width: 100%; margin-top: 20px;
+            background: transparent; color: var(--primary);
+            border: 3px dashed var(--primary);
+            padding: 16px; border-radius: 12px;
+            font-family: 'Cairo', sans-serif; font-weight: 700;
+            font-size: 1.15rem; cursor: pointer;
+            transition: all var(--transition-base);
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+            box-shadow: var(--shadow-sm);
+        }
+        .share-btn:hover {
+            background: var(--primary);
+            color: var(--btn-text);
+            border-style: solid;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
 
         /* ===== Slider / Carousel Styles ===== */
-        .modal-gallery-wrapper { margin-top: 40px; }
-        .slider-container { position: relative; width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border); background: var(--glass-bg); }
-        .slider-track { display: flex; transition: transform 0.4s ease-in-out; }
-        .slide-img { width: 100%; height: 400px; object-fit: contain; flex-shrink: 0; background: rgba(0,0,0,0.05); cursor: zoom-in; }
+        .modal-gallery-wrapper { margin-top: 45px; }
+        .slider-container {
+            position: relative; width: 100%;
+            border-radius: 16px; overflow: hidden;
+            border: 2px solid var(--card-border);
+            background: var(--card-bg);
+            box-shadow: var(--shadow-md);
+        }
+        .slider-track { display: flex; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .slide-img {
+            width: 100%; height: 450px; object-fit: contain;
+            flex-shrink: 0; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            cursor: zoom-in; transition: all var(--transition-base);
+        }
+        .slide-img:hover { transform: scale(1.02); }
         
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: var(--glass-bg); color: var(--text-dark); border: 1px solid var(--glass-border); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center; z-index: 10; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .slider-btn:hover { background: var(--primary); color: var(--btn-text); }
+        .slider-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: var(--card-bg);
+            color: var(--text-dark);
+            border: 2px solid var(--card-border);
+            width: 50px; height: 50px; border-radius: 50%;
+            cursor: pointer; display: flex; justify-content: center; align-items: center;
+            z-index: 10; transition: all var(--transition-base);
+            box-shadow: var(--shadow-md);
+        }
+        .slider-btn:hover {
+            background: var(--primary);
+            color: var(--btn-text);
+            transform: translateY(-50%) scale(1.15);
+            box-shadow: var(--shadow-lg);
+        }
         .right-btn { right: 15px; }
         .left-btn { left: 15px; }
-        
-        .slider-dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
-        .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--glass-border); cursor: pointer; transition: 0.3s; }
-        .dot:hover { background: var(--accent); }
-        .dot.active { background: var(--primary); }
+
+        .slider-dots { display: flex; justify-content: center; gap: 12px; margin-top: 25px; }
+        .dot {
+            width: 14px; height: 14px; border-radius: 50%;
+            background: var(--card-border);
+            cursor: pointer; transition: all var(--transition-base);
+        }
+        .dot:hover {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+        .dot.active {
+            background: var(--primary);
+            width: 35px; border-radius: 7px;
+        }
 
         /* ===== Lightbox (Full Screen Image) ===== */
-        .lightbox-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 2000; align-items: center; justify-content: center; cursor: zoom-out; backdrop-filter: blur(5px); opacity: 0; transition: opacity 0.3s ease; }
+        .lightbox-overlay {
+            display: none; position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95);
+            z-index: 2000; align-items: center; justify-content: center;
+            cursor: zoom-out; opacity: 0;
+            transition: opacity 0.3s ease;
+        }
         .lightbox-overlay.active { opacity: 1; }
-        .lightbox-img { max-width: 95%; max-height: 95vh; border-radius: 8px; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.5); transform: scale(0.95); transition: transform 0.3s ease; }
+        .lightbox-img {
+            max-width: 95%; max-height: 95vh;
+            border-radius: 12px; object-fit: contain;
+            box-shadow: var(--shadow-xl);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
         .lightbox-overlay.active .lightbox-img { transform: scale(1); }
-        .lightbox-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; z-index: 2001; }
+        .lightbox-close {
+            position: absolute; top: 30px; right: 40px;
+            color: white; font-size: 50px;
+            cursor: pointer; z-index: 2001;
+            transition: all var(--transition-base);
+        }
+        .lightbox-close:hover {
+            transform: scale(1.2) rotate(90deg);
+            color: var(--accent);
+        }
 
         /* ===== Mega Footer ===== */
-        .mega-footer { background: var(--glass-bg); backdrop-filter: blur(10px); border-top: 1px solid var(--glass-border); padding: 80px 20px 30px; margin-top: 60px; }
+        .mega-footer {
+            background: var(--card-bg);
+            border-top: 3px solid var(--primary);
+            padding: 80px 20px 30px;
+            margin: 0;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: 0 -10px 30px var(--shadow-sm);
+        }
         .footer-content { max-width: 1200px; margin: 0 auto; text-align: center; }
-        .footer-logo { font-family: 'Cairo', sans-serif; font-size: 2rem; font-weight: 900; margin-bottom: 20px; color: var(--primary); }
-        .footer-desc { color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; line-height: 1.8; }
-        .footer-bottom { border-top: 1px solid var(--glass-border); padding-top: 30px; color: var(--text-muted); font-size: 0.95rem; }
+        .footer-logo {
+            font-family: 'Cairo', sans-serif; font-size: 2.5rem;
+            font-weight: 900; margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .footer-desc {
+            color: var(--text-muted); max-width: 650px;
+            margin: 0 auto 40px; line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer-bottom {
+            border-top: 2px solid var(--card-border);
+            padding-top: 30px; color: var(--text-muted);
+            font-size: 1rem;
+        }
         
         /* Utility */
         .loader-container { display: flex; justify-content: center; align-items: center; min-height: 300px; width: 100%; grid-column: 1/-1;}
@@ -280,27 +628,230 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
+        /* ===== Skeleton Loaders ===== */
+        .skeleton-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 30px; padding: 0 20px; }
+        .skeleton-card { background: var(--card-bg); border: 2px solid var(--card-border); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-md); }
+        .skeleton-cover { width: 100%; height: 220px; background: linear-gradient(90deg, var(--card-border) 25%, rgba(100,116,139,0.1) 50%, var(--card-border) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+        .skeleton-content { padding: 50px 30px 30px; }
+        .skeleton-logo { width: 90px; height: 90px; border-radius: 16px; background: linear-gradient(90deg, var(--card-border) 25%, rgba(100,116,139,0.1) 50%, var(--card-border) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; margin-top: -45px; margin-bottom: 18px; }
+        .skeleton-line { height: 22px; background: linear-gradient(90deg, var(--card-border) 25%, rgba(100,116,139,0.1) 50%, var(--card-border) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 6px; margin-bottom: 14px; }
+        .skeleton-line.title { width: 65%; height: 26px; margin-bottom: 10px; }
+        .skeleton-line.category { width: 45%; height: 18px; margin-bottom: 18px; }
+        .skeleton-line.desc1 { width: 100%; }
+        .skeleton-line.desc2 { width: 88%; }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+        /* ===== Back to Top Button ===== */
+        .back-to-top {
+            position: fixed; bottom: 30px; left: 30px;
+            width: 55px; height: 55px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--btn-text); border: none;
+            border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: var(--shadow-lg);
+            z-index: 999; opacity: 0; visibility: hidden;
+            transform: translateY(30px);
+            transition: all var(--transition-base);
+        }
+        .back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .back-to-top:hover {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+        .back-to-top svg { width: 26px; height: 26px; }
+
+        /* ===== Toast Notifications ===== */
+        .toast-container { position: fixed; top: 80px; right: 20px; z-index: 1001; display: flex; flex-direction: column; gap: 12px; pointer-events: none; }
+        .toast {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-right: 5px solid var(--primary);
+            padding: 18px 22px; border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            display: flex; align-items: center; gap: 14px;
+            min-width: 320px; opacity: 0; transform: translateX(400px);
+            animation: slideIn 0.3s forwards;
+            font-family: 'Cairo', sans-serif;
+            pointer-events: auto;
+        }
+        .toast.success { border-right-color: #10b981; }
+        .toast.error { border-right-color: #ef4444; }
+        .toast.info { border-right-color: #3b82f6; }
+        .toast-icon { font-size: 1.6rem; }
+        .toast-message { flex: 1; color: var(--text-dark); font-weight: 700; font-size: 1rem; }
+        .toast-close { cursor: pointer; color: var(--text-muted); font-size: 1.3rem; transition: all var(--transition-fast); }
+        .toast-close:hover { color: var(--text-dark); transform: scale(1.2); }
+        @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
+        .toast.hiding { animation: slideOut 0.3s forwards; }
+        @keyframes slideOut { to { opacity: 0; transform: translateX(400px); } }
+
+        /* Fixed visual effects never participate in document height */
+        .particles,
+        .noise-overlay,
+        .page-progress,
+        .toast-container {
+            position: fixed;
+            pointer-events: none;
+        }
+
+        /* ===== Scroll Progress Indicator ===== */
+        .scroll-progress {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--card-border);
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .scroll-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            transform: scaleX(0); transform-origin: left;
+            transition: transform 0.1s ease;
+        }
+
+        /* ===== Confetti Effect ===== */
+        .confetti {
+            position: fixed; 
+            top: -20px; 
+            width: 10px; height: 10px;
+            background: var(--primary); z-index: 9999;
+            pointer-events: none;
+            animation: confetti-fall 3s ease-out forwards;
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* ===== Ripple Effect ===== */
+        .ripple {
+            position: fixed; 
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0); animation: ripple-animation 0.6s ease-out;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        @keyframes ripple-animation {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        /* ===== Futuristic Mobile Enhancements ===== */
+        .brand-card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .brand-card:active {
+            transform: perspective(1000px) rotateX(5deg) translateY(-5px) scale(0.98);
+        }
+
+        .touch-pulse {
+            animation: pulse-ring 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(var(--primary), 0.7); }
+            100% { box-shadow: 0 0 0 20px rgba(var(--primary), 0); }
+        }
+
         /* =========================================================
-           ===== Mobile & Responsive Adjustments ===== 
+           ===== Mobile & Responsive Adjustments =====
            ========================================================= */
         @media (max-width: 768px) {
-            .navbar { flex-wrap: wrap; padding: 15px 15px; justify-content: space-between; gap: 8px; }
-            .nav-title { order: 3; width: 100%; font-size: 1.6rem; margin-top: 5px; }
+            body {
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+            }
+
+            .navbar {
+                flex-wrap: wrap;
+                padding: 15px 15px;
+                justify-content: space-between;
+                gap: 8px;
+                box-shadow: 0 4px 30px rgba(var(--primary), 0.2);
+            }
+            .nav-title {
+                order: 3;
+                width: 100%;
+                font-size: 1.6rem;
+                margin-top: 5px;
+            }
             .nav-logos { gap: 10px; }
-            .nav-logo-wrapper { width: 48px; height: 48px; padding: 3px; } 
+            .nav-logo-wrapper {
+                width: 48px;
+                height: 48px;
+                padding: 3px;
+                box-shadow: 0 0 15px rgba(var(--primary), 0.3);
+            }
             .theme-toggle { width: 42px; height: 42px; }
             .theme-toggle svg { width: 24px; height: 24px; }
-            
-            .hero { padding: 40px 15px 50px; }
-            .hero-main-title { font-size: 2.3rem; line-height: 1.5; }
-            .hero-subtitle { font-size: 1.15rem; line-height: 1.6; }
-            .supervision-badge { font-size: 0.95rem; padding: 6px 18px; margin-bottom: 25px; }
-            .hero-desc { font-size: 1.05rem; padding: 0 10px; }
-            
+
+            .hero {
+                padding: 40px 15px 50px;
+                position: relative;
+            }
+            .hero-main-title {
+                font-size: 2.5rem;
+                line-height: 1.4;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+                line-height: 1.6;
+            }
+            .supervision-badge {
+                font-size: 0.95rem;
+                padding: 6px 18px;
+                margin-bottom: 25px;
+                box-shadow: 0 0 20px rgba(var(--primary), 0.3);
+            }
+            .hero-desc {
+                font-size: 1.05rem;
+                padding: 0 10px;
+            }
+
             .hero-btns { flex-direction: column; width: 100%; padding: 0 20px; }
-            .btn { width: 100%; }
+            .btn {
+                width: 100%;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 0 4px 15px rgba(var(--primary), 0.3);
+            }
+
+            .brand-card {
+                border-radius: 24px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+                border: 2px solid transparent;
+                background: var(--card-bg);
+                position: relative;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
+                box-shadow: 0 4px 20px rgba(var(--primary), 0.4);
+            }
+            .toast-container { right: 10px; left: 10px; top: 70px; }
+            .toast {
+                min-width: auto;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            }
             
-            /* تعديل الأيقونة في الموبايل */
+            /* الإحصائيات في الموبايل - 4 مربعات في صف واحد مع الفريم */
+            .stats-container { grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 0 10px; margin-bottom: 30px; }
+            .stat-card { padding: 12px 4px; border-radius: 12px; border-width: 2px; }
+            .stat-card::before { height: 3px; }
+            .stat-number { font-size: 1.2rem; margin-bottom: 4px; }
+            .stat-label { font-size: 0.65rem; font-weight: 800; line-height: 1.3; word-wrap: break-word; }
+
+            .skeleton-container { grid-template-columns: 1fr; }
+            
             .close-btn { top: 15px; right: 15px; width: 38px; height: 38px; }
             .close-btn svg { width: 18px; height: 18px; }
             
@@ -308,7 +859,6 @@
             .modal-logo { width: 90px; height: 90px; margin-top: -45px; border-width: 3px; }
             .modal-header-flex { flex-direction: column; align-items: center; text-align: center; gap: 15px; margin-bottom: 20px; }
             
-            /* التعديل الإجباري لتوسيط الاسم والتصنيف */
             .modal-title-wrapper { align-items: center; text-align: center; }
             .modal-title { justify-content: center; font-size: 1.8rem; text-align: center; width: 100%; }
             .modal-category { display: block; text-align: center; margin-top: 5px; width: 100%; }
@@ -320,12 +870,9 @@
         }
     </style>
 </head>
-<body>
+<body id="main-content">
 
-    <div class="noise-overlay"></div>
-
-    <nav class="navbar">
-        <!-- الجزء اليمين -->
+    <nav class="navbar" role="navigation" aria-label="القائمة الرئيسية">
         <div class="nav-logos">
             <div class="nav-logo-wrapper" title="شعار الكلية">
                 <img src="https://lh3.googleusercontent.com/d/18ntxbXg3NmvBSwBPnuCHIRkaUzS_gYtu" alt="شعار الكلية" class="logo-img faculty">
@@ -335,10 +882,8 @@
             </div>
         </div>
 
-        <!-- الجزء اللي في النص -->
         <div class="nav-title">Medical Sharks</div>
 
-        <!-- الجزء الشمال -->
         <div class="nav-logos">
             <div class="nav-logo-wrapper" title="أسرة طلاب من أجل مصر">
                 <img src="https://lh3.googleusercontent.com/d/1_1iDIuogVg8Ur-RRBTnhx-2YrqRtbW5S" alt="طلاب من أجل مصر" class="logo-img family">
@@ -346,7 +891,6 @@
             <div class="nav-logo-wrapper" title="اللجنة الاجتماعية">
                 <img src="https://lh3.googleusercontent.com/d/13iby6kkgw6QTBoQeF568C7S0utmEFKUF" alt="اللجنة الاجتماعية" class="logo-img social">
             </div>
-            <!-- زرار الدارك مود -->
             <button class="theme-toggle" id="themeToggle" title="تبديل الوضع"></button>
         </div>
     </nav>
@@ -354,38 +898,48 @@
     <section class="hero reveal active">
         <div class="hero-content" id="heroContent">
             <h1 class="hero-main-title">مرحباً بكم في <br> <bdi>Medical Sharks</bdi> 🦈🩺</h1>
-            
             <h2 class="hero-subtitle">المنصة الرسمية لريادة الأعمال بطلاب كلية الطب - جامعة طنطا</h2>
-            
-            
             <p class="hero-desc">
                 نُسلط الضوء على العلامات التجارية والمبادرات الواعدة التي يقودها أطباء المستقبل لنصنع بيئة متكاملة تُعزز التواصل وتدعم الفكر الريادي وتحول الأفكار الطبية والإبداعية إلى مشاريع ناجحة داخل الحرم الجامعي وخارجه.
             </p>
-            
             <div class="hero-btns">
                 <a href="#directory" class="btn btn-primary" id="exploreBtn">تصفح المشاريع</a>
-                <!-- لينك فورم التسجيل -->
                 <a href="https://forms.gle/AfWX4H6XoUfS6ZBF6" target="_blank" class="btn btn-outline">تسجيل مشروع جديد</a>
             </div>
         </div>
     </section>
 
+    <!-- Stats Section -->
+    <div class="stats-container reveal" id="statsContainer" style="display: none;">
+        <div class="stat-card">
+            <div class="stat-number" id="totalProjects">0</div>
+            <div class="stat-label">مشروع</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="totalCategories">0</div>
+            <div class="stat-label">تصنيف مختلف</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="totalViews">0</div>
+            <div class="stat-label">مشاهدة</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="totalStudents">0</div>
+            <div class="stat-label">طلاب مشاركة</div>
+        </div>
+    </div>
+
     <!-- Search & Filters -->
     <div class="search-container reveal" id="directory">
-        <input type="text" id="searchInput" class="search-input" placeholder="ابحث عن اسم المشروع، التصنيف، أو الطالب المالك...">
+        <input type="text" id="searchInput" class="search-input" placeholder="ابحث عن اسم المشروع، التصنيف، أو الطالب المالك..." aria-label="البحث في المشاريع">
     </div>
-    
-    <!-- حاوية الفلاتر -->
+
     <div class="tags-container reveal" id="filterTags"></div>
 
     <!-- Brands Directory -->
     <div class="directory-container">
-        <!-- شاشة التحميل مع الدالة الجديدة اللي بتعالج التأخير -->
-        <div id="loading" class="loader-container">
-            <div class="spinner"></div>
-        </div>
+        <div id="loading" class="loader-container"><div class="spinner"></div></div>
         
-        <!-- Spotlight: Brand of the Month -->
         <div id="spotlightSection" class="spotlight-section reveal" style="display: none;">
             <h2 class="spotlight-title">🏆 نجم الشهر 🏆</h2>
             <div id="spotlightGrid" class="spotlight-grid"></div>
@@ -395,13 +949,11 @@
     </div>
 
     <!-- Mega Footer -->
-    <footer class="mega-footer reveal">
+    <footer class="mega-footer">
         <div class="footer-content">
             <div class="footer-logo">Medical Sharks</div>
             <p class="footer-desc">مبادرة طلابية تهدف إلى بناء مجتمع داعم للمواهب والمشاريع التجارية لطلاب كلية الطب بجامعة طنطا.</p>
-            
             <a href="https://forms.gle/AfWX4H6XoUfS6ZBF6" target="_blank" class="btn btn-primary" style="margin-bottom: 40px; padding: 10px 30px; font-size: 1rem;">انضم إلى المنصة الآن</a>
-            
             <div class="footer-bottom">
                 <p>تم التصميم والتطوير بواسطة <span style="color:var(--primary); font-weight:700;">اتحاد طلاب طب طنطا</span> </p>
             </div>
@@ -411,12 +963,10 @@
     <!-- Premium Modal Structure -->
     <div class="modal-overlay" id="brandModal" onclick="closeModal(event)">
         <div class="modal-content">
-            <!-- استخدام SVG بدلاً من النص لضمان التوسيط 100% -->
             <span class="close-btn" onclick="closeModal(event, true)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </span>
             <div class="modal-header">
-                <!-- Using 1x1 transparent pixel to prevent browser hanging on empty src -->
                 <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Cover" class="modal-cover" id="modalCover" onerror="this.src='https://via.placeholder.com/800x400/0f172a/ffffff?text=Image+Not+Found'">
             </div>
             <div class="modal-body">
@@ -432,18 +982,15 @@
                 <p class="modal-desc" id="modalDesc">الوصف هنا</p>
                 <p class="modal-desc" id="modalStudents" style="margin-top: 15px; color: var(--text-dark); font-weight: 700;"></p>
                 
-                <!-- Discount Box -->
                 <div id="discountContainer" class="discount-code-wrapper"></div>
 
                 <h4 class="modal-section-title">قنوات التواصل</h4>
                 <div class="modal-social-links" id="modalSocial"></div>
                 <button class="share-btn" id="smartShareBtn">🔗 شارك هذا المشروع  </button>
 
-                <!-- Slider / Carousel Section -->
                 <div class="modal-gallery-wrapper" id="galleryWrapper" style="display: none;">
                     <h4 class="modal-section-title" id="galleryTitle">معرض الأعمال</h4>
                     <div class="slider-container">
-                        <!-- أسهم مضبوطة 100% لليمين والشمال -->
                         <button class="slider-btn right-btn" onclick="moveSlide(-1)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                         </button>
@@ -454,7 +1001,6 @@
                     </div>
                     <div class="slider-dots" id="sliderDots"></div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -465,42 +1011,170 @@
         <img id="lightboxImg" class="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
     </div>
 
+    <!-- ==========================================
+         تم نقل جميع العناصر الخلفية والإضافية لأسفل الصفحة 
+         لضمان عدم تشويه التصميم وتجنب أي مساحات فارغة
+         ========================================== -->
+    <div class="page-progress" id="pageProgress"></div>
+    <div class="scroll-progress"><div class="scroll-progress-bar" id="scrollProgressBar"></div></div>
+    <div class="particles" id="particles"></div>
+    <div class="noise-overlay"></div>
+    <div class="toast-container" id="toastContainer"></div>
+    <button class="back-to-top" id="backToTop" aria-label="العودة لأعلى" title="العودة لأعلى">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
     <script>
         const API_URL = "https://script.google.com/macros/s/AKfycbyjHBq8COpbVnFCFJrd-AD5Cu5zetjEQzOP0Do5mUhb5mNXMtUHZix4OD0uAdCpiWdL/exec";
-        let allBrands = []; 
+        let allBrands = [];
         let currentFilter = 'all';
-        let currentBrandData = null; 
-        
+        let currentBrandData = null;
+
         let currentSlide = 0;
         let totalSlides = 0;
 
-        // Force Scroll to Top on Load
+        // ===== Toast Notification System =====
+        function showToast(message, type = 'info', duration = 3000) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+
+            const icons = { success: '✅', error: '❌', info: 'ℹ️' };
+
+            toast.innerHTML = `
+                <span class="toast-icon">${icons[type]}</span>
+                <span class="toast-message">${message}</span>
+                <span class="toast-close" onclick="this.parentElement.classList.add('hiding')">×</span>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('hiding');
+                setTimeout(() => toast.remove(), 300);
+            }, duration);
+        }
+
+        // ===== Back to Top Button =====
+        function initBackToTop() {
+            const btn = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) btn.classList.add('show');
+                else btn.classList.remove('show');
+            });
+            btn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // ===== Stats Counter =====
+        function updateStats() {
+            const categories = new Set(allBrands.map(b => b.Category).filter(c => c));
+            const totalViews = allBrands.reduce((sum, b) => sum + (parseInt(b.Views) || 0), 0);
+            const students = new Set();
+
+            allBrands.forEach(b => {
+                if (b.Students) {
+                    b.Students.split(/[،,&و-]/).forEach(s => students.add(s.trim()));
+                }
+            });
+
+            animateCounter('totalProjects', allBrands.length);
+            animateCounter('totalCategories', categories.size);
+            animateCounter('totalViews', totalViews);
+            animateCounter('totalStudents', students.size);
+
+            document.getElementById('statsContainer').style.display = 'grid';
+        }
+
+        function animateCounter(id, target) {
+            const element = document.getElementById(id);
+            const duration = 1000;
+            const steps = 30;
+            const increment = target / steps;
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = Math.round(target);
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.round(current);
+                }
+            }, duration / steps);
+        }
+
+        // ===== Skeleton Loaders =====
+        function showSkeletonLoaders() {
+            const container = document.getElementById('brandsGrid');
+            const skeletons = Array(6).fill('').map(() => `
+                <div class="skeleton-card">
+                    <div class="skeleton-cover"></div>
+                    <div class="skeleton-content">
+                        <div class="skeleton-logo"></div>
+                        <div class="skeleton-line title"></div>
+                        <div class="skeleton-line category"></div>
+                        <div class="skeleton-line desc1"></div>
+                        <div class="skeleton-line desc2"></div>
+                    </div>
+                </div>
+            `).join('');
+            container.innerHTML = skeletons;
+            container.className = 'skeleton-container';
+        }
+
+        function hideSkeletonLoaders() {
+            const container = document.getElementById('brandsGrid');
+            container.className = 'brands-grid';
+        }
+
         window.onload = function() {
             setTimeout(function() { window.scrollTo(0, 0); }, 100);
         };
 
         document.addEventListener('DOMContentLoaded', () => {
             initTheme();
-            initParallax();
+            initBackToTop();
+            initFloatingParticles();
+            initScrollProgress();
+            initRippleEffect();
             fetchBrands();
-            
+
             document.getElementById('searchInput').addEventListener('input', applyFilters);
             window.addEventListener("scroll", revealOnScroll);
-            
+
             document.getElementById('exploreBtn').addEventListener('click', function(e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
 
             document.getElementById("smartShareBtn").addEventListener("click", () => {
+                createConfetti(); 
                 if (currentBrandData && navigator.share) {
                     navigator.share({
                         title: currentBrandData.BrandName + ' - Medical Sharks',
                         text: `شوف شغل زمايلنا في مشروع "${currentBrandData.BrandName}" على منصة Medical Sharks! 🦈`,
                         url: window.location.href
-                    }).catch(console.error);
+                    }).then(() => {
+                    }).catch(err => {
+                        if (err.name !== 'AbortError') {
+                            navigator.clipboard.writeText(window.location.href);
+                            showToast('تم نسخ الرابط للحافظة ✅', 'success');
+                        }
+                    });
                 } else {
-                    alert("خاصية المشاركة السريعة غير مدعومة في متصفحك الحالي. تقدر تنسخ الرابط من فوق.");
+                    navigator.clipboard.writeText(window.location.href);
+                    showToast('تم نسخ الرابط للحافظة ✅', 'success');
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    const modal = document.getElementById('brandModal');
+                    if (modal.classList.contains('active')) closeModal(null, true);
+                    const lightbox = document.getElementById('imageLightbox');
+                    if (lightbox.style.display === 'flex') closeLightbox();
                 }
             });
         });
@@ -511,133 +1185,92 @@
             let fileId = null;
             const driveRegex = /\/file\/d\/([a-zA-Z0-9_-]+)/;
             const match = url.match(driveRegex);
-            if (match && match[1]) {
-                fileId = match[1];
-            } else {
+            if (match && match[1]) fileId = match[1];
+            else {
                 const idRegex = /[?&]id=([a-zA-Z0-9_-]+)/;
                 const match2 = url.match(idRegex);
-                if (match2 && match2[1] && url.includes('drive.google.com')) {
-                    fileId = match2[1];
-                }
+                if (match2 && match2[1] && url.includes('drive.google.com')) fileId = match2[1];
             }
-            if (fileId) {
-                return "https://lh3.googleusercontent.com/d/" + fileId;
-            }
-            return url;
+            return fileId ? "https://lh3.googleusercontent.com/d/" + fileId : url;
         }
 
         // --- Theme Toggle Logic ---
         function initTheme() {
             const themeBtn = document.getElementById('themeToggle');
             const savedTheme = localStorage.getItem('sharks-theme');
-            
             const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
             const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
 
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-mode');
                 themeBtn.innerHTML = sunIcon;
-            } else {
-                themeBtn.innerHTML = moonIcon;
-            }
+            } else themeBtn.innerHTML = moonIcon;
             
             themeBtn.addEventListener('click', () => {
                 document.body.classList.toggle('dark-mode');
                 const isDark = document.body.classList.contains('dark-mode');
-                
                 themeBtn.innerHTML = isDark ? sunIcon : moonIcon;
-                
                 themeBtn.style.transform = 'scale(0.7) rotate(30deg)';
                 setTimeout(() => { themeBtn.style.transform = 'scale(1) rotate(0deg)'; }, 200);
-
                 localStorage.setItem('sharks-theme', isDark ? 'dark' : 'light');
-            });
-        }
-
-        function initParallax() {
-            window.addEventListener('scroll', () => {
-                const heroContent = document.getElementById('heroContent');
-                let scrollPos = window.pageYOffset;
-                if(scrollPos < 600) {
-                    heroContent.style.transform = `translateY(${scrollPos * 0.3}px)`;
-                    heroContent.style.opacity = 1 - (scrollPos / 400);
-                }
             });
         }
 
         function revealOnScroll() {
             var reveals = document.querySelectorAll(".reveal:not(.active)");
             for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) {
-                    reveals[i].classList.add("active");
-                }
+                if (elementTop < window.innerHeight - 100) reveals[i].classList.add("active");
             }
         }
 
-        // --- تعديل دالة جلب البيانات (الحماية من التعليق اللانهائي) ---
         async function fetchBrands() {
             const loadingElement = document.getElementById('loading');
-            
-            // عمل "تايم أوت" 15 ثانية لمنع التحميل اللانهائي
+            showSkeletonLoaders();
+            loadingElement.style.display = 'none';
+
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 15000);
 
             try {
                 const response = await fetch(API_URL, { signal: controller.signal });
-                clearTimeout(timeoutId); // لو الداتا جت قبل 15 ثانية، نلغي التايم أوت
-                
+                clearTimeout(timeoutId);
                 allBrands = await response.json();
-                loadingElement.style.display = 'none';
-                
-                // إنشاء التصنيفات أوتوماتيكياً بناءً على الأكثر تكراراً
+                hideSkeletonLoaders();
+                updateStats();
                 generateDynamicCategories();
                 applyFilters();
             } catch (error) {
+                hideSkeletonLoaders();
                 if (error.name === 'AbortError') {
-                    // لو عدى 15 ثانية والسيرفر ماردش
-                    loadingElement.innerHTML = `
-                        <div style="text-align: center; color: var(--text-muted);">
+                    document.getElementById('brandsGrid').innerHTML = `
+                        <div style="text-align: center; color: var(--text-muted); grid-column: 1/-1; padding: 60px 20px;">
                             <p style="font-size: 1.2rem; margin-bottom: 15px;">جاري تجهيز البيانات، برجاء تحديث الصفحة 🦈</p>
                             <button onclick="location.reload()" class="btn btn-primary" style="padding: 10px 25px;">تحديث</button>
                         </div>
                     `;
                 } else {
-                    // لو فيه خطأ تاني في الرابط أو الشيت
-                    loadingElement.innerHTML = "<p style='color:red; text-align:center;'>عذراً، حدث خطأ في الاتصال بقاعدة البيانات. يرجى المحاولة لاحقاً.</p>";
+                    document.getElementById('brandsGrid').innerHTML = "<p style='color:red; text-align:center; grid-column: 1/-1; padding: 40px;'>عذراً، حدث خطأ في الاتصال بقاعدة البيانات. يرجى المحاولة لاحقاً.</p>";
                 }
             }
         }
 
-        // --- الدالة الذكية لإنشاء أزرار التصنيف ---
         function generateDynamicCategories() {
             const categoryCounts = {};
-            
-            // حساب تكرار كل تصنيف
             allBrands.forEach(brand => {
                 if (brand.Category && brand.Category.trim() !== '') {
                     const cat = brand.Category.trim();
                     categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
                 }
             });
-
-            // ترتيب التصنيفات من الأكتر للأقل
             const sortedCategories = Object.keys(categoryCounts).sort((a, b) => categoryCounts[b] - categoryCounts[a]);
-            
-            // اختيار أعلى 4 تصنيفات بس
             const topCategories = sortedCategories.slice(0, 4);
 
             const tagsContainer = document.getElementById('filterTags');
-            // الحفاظ على زرار "عرض الكل"
             tagsContainer.innerHTML = '<button class="tag-btn active" data-filter="all">عرض الكل</button>';
-
-            // رسم باقي الزراير
             topCategories.forEach(cat => {
                 tagsContainer.innerHTML += `<button class="tag-btn" data-filter="${cat}">${cat}</button>`;
             });
-
-            // تفعيل فلاتر الزراير الجديدة
             setupFilters();
         }
 
@@ -655,13 +1288,17 @@
 
         function applyFilters() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const filteredBrands = allBrands.filter(brand => {
+            let filteredBrands = allBrands.filter(brand => {
                 const matchesSearch = (brand.BrandName && brand.BrandName.toLowerCase().includes(searchTerm)) ||
                                       (brand.Students && brand.Students.toLowerCase().includes(searchTerm)) ||
                                       (brand.Description && brand.Description.toLowerCase().includes(searchTerm));
                 const matchesTag = currentFilter === 'all' || (brand.Category && brand.Category.includes(currentFilter));
                 return matchesSearch && matchesTag;
             });
+            
+            // ترتيب المشاريع الافتراضي (الأحدث أولاً)
+            filteredBrands.reverse();
+            
             renderCards(filteredBrands);
         }
 
@@ -678,31 +1315,22 @@
             
             if(brandsData && brandsData.length > 0) {
                 brandsData.forEach((brand) => {
-                    if (brand.BrandOfTheMonth && brand.BrandOfTheMonth.toString().trim() !== '' && brand.BrandOfTheMonth.toString().toLowerCase() !== 'false') {
-                        botmBrands.push(brand);
-                    } else {
-                        regularBrands.push(brand);
-                    }
+                    if (brand.BrandOfTheMonth && brand.BrandOfTheMonth.toString().trim() !== '' && brand.BrandOfTheMonth.toString().toLowerCase() !== 'false') botmBrands.push(brand);
+                    else regularBrands.push(brand);
                 });
             }
 
             const searchTerm = document.getElementById('searchInput').value;
             if (botmBrands.length > 0 && currentFilter === 'all' && searchTerm === '') {
                 spotlightSection.style.display = 'block';
-                botmBrands.forEach((brand) => {
-                    spotlightGrid.insertAdjacentHTML('beforeend', createBrandCard(brand, true));
-                });
+                botmBrands.forEach((brand) => { spotlightGrid.insertAdjacentHTML('beforeend', createBrandCard(brand, true)); });
             } else {
                 spotlightSection.style.display = 'none';
-                if (searchTerm !== '' || currentFilter !== 'all') {
-                    regularBrands = [...botmBrands, ...regularBrands];
-                }
+                if (searchTerm !== '' || currentFilter !== 'all') regularBrands = [...botmBrands, ...regularBrands];
             }
 
             if(regularBrands.length > 0) {
-                regularBrands.forEach((brand) => {
-                    gridElement.insertAdjacentHTML('beforeend', createBrandCard(brand, false));
-                });
+                regularBrands.forEach((brand) => { gridElement.insertAdjacentHTML('beforeend', createBrandCard(brand, false)); });
                 setTimeout(revealOnScroll, 50); 
             } else if (botmBrands.length === 0) {
                  gridElement.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 1.2rem; padding: 40px 0;">لا توجد مشاريع مطابقة لبحثك في الوقت الحالي.</p>';
@@ -713,19 +1341,21 @@
             const brandJson = encodeURIComponent(JSON.stringify(brand));
             const coverImg = getDirectDriveLink(brand.CoverImage) || 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80';
             const logoImg = getDirectDriveLink(brand.LogoImage) || 'https://via.placeholder.com/150/ffffff/0b5b9c?text=Logo';
-            
             const badgeHTML = isBotM ? `<div class="botm-badge">🏆 براند الشهر</div>` : '';
-            
+
             return `
-                <div class="brand-card reveal" onclick="openModal('${brandJson}')">
+                <div class="brand-card reveal" onclick="openModal('${brandJson}')" role="article" aria-label="مشروع ${brand.BrandName}" tabindex="0">
                     ${badgeHTML}
-                    <div class="cover-image-container"><img src="${coverImg}" class="cover-image" onerror="this.src='https://via.placeholder.com/800x400/0f172a/ffffff?text=Image+Not+Found'"></div>
+                    <div class="cover-image-container">
+                        <img src="${coverImg}" class="cover-image" alt="صورة غلاف ${brand.BrandName}" onerror="this.src='https://via.placeholder.com/800x400/0f172a/ffffff?text=Image+Not+Found'">
+                    </div>
                     <div class="brand-info">
-                        <div class="logo-container" style="background: #fff;"><img src="${logoImg}" class="brand-logo" style="object-fit: contain;" onerror="this.src='https://via.placeholder.com/150/ffffff/0b5b9c?text=Logo'"></div>
+                        <div class="logo-container" style="background: #fff;">
+                            <img src="${logoImg}" class="brand-logo" style="object-fit: contain;" alt="شعار ${brand.BrandName}" onerror="this.src='https://via.placeholder.com/150/ffffff/0b5b9c?text=Logo'">
+                        </div>
                         <h2 class="brand-name">${brand.BrandName}</h2>
                         <span class="brand-category">${brand.Category}</span>
                         <p class="brand-description">${brand.Description || 'لا يوجد وصف متاح.'}</p>
-                        
                         <div class="card-footer-action">
                             <p class="students-names">المؤسسون: <strong>${brand.Students || 'طلاب الكلية'}</strong></p>
                             <span class="read-more-text">عرض التفاصيل <span class="read-more-arrow">←</span></span>
@@ -752,29 +1382,24 @@
                 box.style.background = '#25D366';
                 box.style.color = '#fff';
                 box.style.borderColor = '#25D366';
-                
-                setTimeout(() => {
-                    box.innerHTML = originalHTML;
-                    box.style = '';
-                }, 2000);
+                setTimeout(() => { box.innerHTML = originalHTML; box.style = ''; }, 2000);
             });
         }
 
         function openModal(brandJson) {
             const brand = JSON.parse(decodeURIComponent(brandJson));
             currentBrandData = brand;
+            
+            const modalContent = document.querySelector('#brandModal .modal-content');
+            if(modalContent) modalContent.scrollTop = 0;
+
+            document.body.style.overflow = 'hidden';
 
             document.getElementById('modalCover').src = getDirectDriveLink(brand.CoverImage) || 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80';
             document.getElementById('modalLogo').src = getDirectDriveLink(brand.LogoImage) || 'https://via.placeholder.com/150/ffffff/0b5b9c?text=Logo';
             
-            // إصلاح الغلطة ورجوع تعريف المتغير isBotm
             const isBotm = brand.BrandOfTheMonth && brand.BrandOfTheMonth.toString().trim() !== '' && brand.BrandOfTheMonth.toString().toLowerCase() !== 'false';
-            
-            // تعديل فصل الكأس عن الاسم لضمان التوسيط الهندسي
-            const titleHTML = isBotm 
-                ? `<span style="font-size: 1.5rem; display: flex; align-items: center;" title="براند الشهر">🏆</span> <span>${brand.BrandName}</span>` 
-                : `<span>${brand.BrandName}</span>`;
-            document.getElementById('modalTitle').innerHTML = titleHTML;
+            document.getElementById('modalTitle').innerHTML = isBotm ? `<span style="font-size: 1.5rem; display: flex; align-items: center;" title="براند الشهر">🏆</span> <span>${brand.BrandName}</span>` : `<span>${brand.BrandName}</span>`;
             
             document.getElementById('modalCategory').innerText = brand.Category;
             document.getElementById('modalDesc').innerText = brand.Description || 'لم يتم إضافة تفاصيل إضافية لهذا المشروع بعد.';
@@ -792,59 +1417,43 @@
             trackAction(brand.BrandName, 'view');
             
             let socialHTML = '';
-            if (brand.Facebook) socialHTML += `<a href="${brand.Facebook}" target="_blank" class="social-link-item fb-btn" onclick="trackAction('${brand.BrandName}', 'click')">فيسبوك</a>`;
-            if (brand.Instagram) socialHTML += `<a href="${brand.Instagram}" target="_blank" class="social-link-item ig-btn" onclick="trackAction('${brand.BrandName}', 'click')">إنستجرام</a>`;
-            if (brand.WhatsApp) socialHTML += `<a href="https://wa.me/${brand.WhatsApp}" target="_blank" class="social-link-item wa-btn" onclick="trackAction('${brand.BrandName}', 'click')">واتساب</a>`;
+            if (brand.Facebook) socialHTML += `<a href="${brand.Facebook}" target="_blank" class="social-link-item fb-btn">فيسبوك</a>`;
+            if (brand.Instagram) socialHTML += `<a href="${brand.Instagram}" target="_blank" class="social-link-item ig-btn">إنستجرام</a>`;
+            if (brand.WhatsApp) socialHTML += `<a href="https://wa.me/${brand.WhatsApp}" target="_blank" class="social-link-item wa-btn">واتساب</a>`;
             
             const socialContainer = document.getElementById('modalSocial');
-            if(socialHTML === '') {
-                socialContainer.innerHTML = '<p style="color:var(--text-muted);">لا توجد قنوات تواصل مسجلة حالياً.</p>';
-            } else {
-                socialContainer.innerHTML = socialHTML;
-            }
+            socialContainer.innerHTML = socialHTML || '<p style="color:var(--text-muted);">لا توجد قنوات تواصل مسجلة حالياً.</p>';
 
             const galleryWrapper = document.getElementById('galleryWrapper');
             const sliderTrack = document.getElementById('modalSlider');
             const dotsContainer = document.getElementById('sliderDots');
             
-            sliderTrack.innerHTML = '';
-            dotsContainer.innerHTML = '';
-            currentSlide = 0;
-            totalSlides = 0;
+            sliderTrack.innerHTML = ''; dotsContainer.innerHTML = '';
+            currentSlide = 0; totalSlides = 0;
 
             let images = [];
             for(let i=1; i<=10; i++) {
                 let galImg = brand[`Gallery${i}`];
-                if(galImg) {
-                    let imgStr = galImg.toString().trim();
-                    if(imgStr !== '' && imgStr.includes('http')) {
-                        images.push(getDirectDriveLink(imgStr));
-                    }
-                }
+                if(galImg && galImg.toString().trim() !== '' && galImg.toString().includes('http')) images.push(getDirectDriveLink(galImg.toString().trim()));
             }
 
             if (images.length > 0) {
                 galleryWrapper.style.display = 'block';
                 totalSlides = images.length;
-                
                 images.forEach((imgSrc, index) => {
                     sliderTrack.innerHTML += `<img src="${imgSrc}" class="slide-img" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400/0f172a/ffffff?text=Error+Loading+Image'">`;
                     dotsContainer.innerHTML += `<div class="dot ${index === 0 ? 'active' : ''}" onclick="goToSlide(${index})"></div>`;
                 });
-                
                 document.querySelector('.right-btn').style.display = totalSlides > 1 ? 'flex' : 'none';
                 document.querySelector('.left-btn').style.display = totalSlides > 1 ? 'flex' : 'none';
-                
                 updateSlider();
             } else {
                 galleryWrapper.style.display = 'none';
             }
 
             document.getElementById('brandModal').classList.add('active');
-            document.body.style.overflow = 'hidden'; 
         }
 
-        // --- Lightbox Functions ---
         function openLightbox(src) {
             if(src.includes('Error+Loading+Image') || src.includes('data:image')) return; 
             const lb = document.getElementById('imageLightbox');
@@ -859,7 +1468,6 @@
             setTimeout(() => lb.style.display = 'none', 300);
         }
 
-        // --- Slider Functions ---
         function moveSlide(direction) {
             currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
             updateSlider();
@@ -874,16 +1482,129 @@
             const track = document.getElementById('modalSlider');
             const dots = document.querySelectorAll('.dot');
             track.style.transform = `translateX(${currentSlide * 100}%)`;
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
+            dots.forEach((dot, index) => { dot.classList.toggle('active', index === currentSlide); });
         }
 
         function closeModal(event, forceClose = false) {
             if (forceClose || event.target.id === 'brandModal') {
                 document.getElementById('brandModal').classList.remove('active');
-                document.body.style.overflow = 'auto'; 
+                document.body.style.overflow = 'auto';
             }
+        }
+
+        // ===== Floating Particles =====
+        function initFloatingParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const size = Math.random() * 30 + 10;
+                particle.style.width = `${size}px`; particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`; particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDelay = `${Math.random() * 20}s`;
+                particle.style.animationDuration = `${Math.random() * 10 + 15}s`;
+                container.appendChild(particle);
+            }
+        }
+
+        // ===== Scroll Progress =====
+        function initScrollProgress() {
+            const progressBar = document.getElementById('scrollProgressBar');
+            window.addEventListener('scroll', () => {
+                const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+                progressBar.style.transform = `scaleX(${(window.pageYOffset || document.documentElement.scrollTop) / documentHeight})`;
+            });
+        }
+
+        // ===== Ripple Effect =====
+        function initRippleEffect() {
+            document.addEventListener('click', (e) => {
+                const ripple = document.createElement('div');
+                ripple.className = 'ripple';
+                ripple.style.left = e.clientX + 'px'; ripple.style.top = e.clientY + 'px';
+                document.body.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        }
+
+        // ===== Confetti Effect =====
+        function createConfetti() {
+            const colors = ['#0b5b9c', '#d97706', '#f59e0b', '#3b82f6'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            const progress = document.getElementById('pageProgress');
+            progress.style.transform = 'scaleX(1)';
+            setTimeout(() => { progress.style.opacity = '0'; }, 500);
+        });
+
+        // ===== Futuristic Mobile Features =====
+        function triggerHaptic(intensity = 'light') {
+            if ('vibrate' in navigator) {
+                if(intensity==='light') navigator.vibrate(10);
+                else if(intensity==='medium') navigator.vibrate(20);
+                else navigator.vibrate([10, 20, 10]);
+            }
+        }
+
+        function initTouchInteractions() {
+            document.addEventListener('touchstart', (e) => {
+                if (e.target.closest('.brand-card')) { triggerHaptic('light'); e.target.closest('.brand-card').classList.add('touch-pulse'); }
+                if (e.target.closest('.btn')) triggerHaptic('light');
+            });
+            document.addEventListener('touchend', (e) => {
+                if (e.target.closest('.brand-card')) setTimeout(() => { e.target.closest('.brand-card')?.classList.remove('touch-pulse'); }, 1000);
+            });
+        }
+
+        function initSwipeGestures() {
+            const slider = document.getElementById('modalSlider');
+            if (!slider) return;
+            let touchStartX = 0, touchEndX = 0;
+            slider.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
+            slider.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchEndX < touchStartX - 50) { moveSlide(1); triggerHaptic('medium'); }
+                if (touchEndX > touchStartX + 50) { moveSlide(-1); triggerHaptic('medium'); }
+            });
+        }
+
+        function init3DCardEffect() {
+            document.querySelectorAll('.brand-card').forEach(card => {
+                card.addEventListener('touchmove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.touches[0].clientX - rect.left, y = e.touches[0].clientY - rect.top;
+                    card.style.transform = `perspective(1000px) rotateX(${(y - rect.height/2)/20}deg) rotateY(${(rect.width/2 - x)/20}deg) scale(1.02)`;
+                });
+                card.addEventListener('touchend', () => { card.style.transform = ''; });
+            });
+        }
+
+        if (window.innerWidth <= 768) {
+            document.addEventListener('DOMContentLoaded', () => {
+                initTouchInteractions(); setTimeout(initSwipeGestures, 1000);
+            });
+            window.addEventListener('load', () => { setTimeout(init3DCardEffect, 500); });
+        }
+
+        // ===== Service Worker Registration =====
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registered successfully:', registration.scope);
+                    }).catch(error => { console.log('ServiceWorker registration failed:', error); });
+            });
         }
     </script>
 </body>
