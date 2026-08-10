@@ -92,6 +92,21 @@
             transition: background 0.5s ease, color 0.5s ease;
         }
 
+        /* Fix: visual particles must not take up document space */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .particle {
+            position: absolute;
+        }
+
         /* Subtly Textured Background */
         .noise-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -353,22 +368,39 @@
 
         /* ===== تعديلات الكارد فوتر (عرض التفاصيل) ===== */
         .card-footer-action {
-            display: flex; justify-content: space-between; align-items: center;
-            border-top: 2px solid var(--card-border);
-            padding-top: 15px; margin-top: auto;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-top: 2px solid var(--card-border); 
+            padding-top: 15px; 
+            margin-top: auto; 
+            gap: 10px; /* مسافة أمان لمنع التداخل */
         }
         .students-names {
-            font-size: 0.88rem; color: var(--text-muted);
-            font-weight: 500; margin: 0;
+            font-size: 0.88rem; 
+            color: var(--text-muted); 
+            font-weight: 500; 
+            margin: 0; 
+            flex: 1; /* يأخذ المساحة المتبقية فقط */
+            white-space: nowrap; /* يمنع نزول النص لسطرين */
+            overflow: hidden; /* يخفي النص الزائد */
+            text-overflow: ellipsis; /* يضيف 3 نقاط في النهاية لو الاسم طويل */
         }
         .students-names strong {
-            color: var(--primary); font-weight: 700;
+            color: var(--primary); 
+            font-weight: 700; 
         }
-        
         .read-more-text {
-            font-size: 0.9rem; font-family: 'Cairo', sans-serif; font-weight: 800;
-            color: var(--primary); display: flex; align-items: center; gap: 5px;
-            transition: all 0.3s ease;
+            font-size: 0.9rem; 
+            font-family: 'Cairo', sans-serif; 
+            font-weight: 800; 
+            color: var(--primary); 
+            display: flex; 
+            align-items: center; 
+            gap: 5px; 
+            transition: all 0.3s ease; 
+            flex-shrink: 0; /* يمنع الزرار من الانكماش مهما كان طول الاسم */
+            white-space: nowrap; /* يمنع نزول الزرار لسطرين */
         }
         .read-more-arrow { transition: transform 0.3s ease; }
         .brand-card:hover .read-more-text { color: var(--accent); }
@@ -391,8 +423,6 @@
             transform: translateY(30px) scale(0.95);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow: var(--shadow-xl);
-            overscroll-behavior-y: contain; /* حماية السحب في الموبايل */
-            -webkit-overflow-scrolling: touch;
         }
         .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
 
@@ -598,10 +628,7 @@
         .mega-footer {
             background: var(--card-bg);
             border-top: 3px solid var(--primary);
-            padding: 80px 20px 30px;
-            margin: 0;
-            width: 100%;
-            box-sizing: border-box;
+            padding: 80px 20px 30px; margin-top: 80px;
             box-shadow: 0 -10px 30px var(--shadow-sm);
         }
         .footer-content { max-width: 1200px; margin: 0 auto; text-align: center; }
@@ -687,26 +714,11 @@
         .toast.hiding { animation: slideOut 0.3s forwards; }
         @keyframes slideOut { to { opacity: 0; transform: translateX(400px); } }
 
-        /* Fixed visual effects never participate in document height */
-        .particles,
-        .noise-overlay,
-        .page-progress,
-        .toast-container {
-            position: fixed;
-            pointer-events: none;
-        }
-
         /* ===== Scroll Progress Indicator ===== */
         .scroll-progress {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--card-border);
-            z-index: 9999;
-            pointer-events: none;
+            position: fixed; bottom: 0; left: 0; right: 0;
+            height: 4px; background: var(--card-border);
+            z-index: 999;
         }
         .scroll-progress-bar {
             height: 100%;
@@ -843,7 +855,6 @@
                 box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             }
             
-            /* الإحصائيات في الموبايل - 4 مربعات في صف واحد مع الفريم */
             .stats-container { grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 0 10px; margin-bottom: 30px; }
             .stat-card { padding: 12px 4px; border-radius: 12px; border-width: 2px; }
             .stat-card::before { height: 3px; }
@@ -871,6 +882,27 @@
     </style>
 </head>
 <body id="main-content">
+
+    <!-- Page Loading Progress Bar -->
+    <div class="page-progress" id="pageProgress"></div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    </div>
+
+    <!-- Floating Particles Background -->
+    <div class="particles" id="particles"></div>
+
+    <div class="noise-overlay"></div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="العودة لأعلى" title="العودة لأعلى">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
 
     <nav class="navbar" role="navigation" aria-label="القائمة الرئيسية">
         <div class="nav-logos">
@@ -913,7 +945,7 @@
     <div class="stats-container reveal" id="statsContainer" style="display: none;">
         <div class="stat-card">
             <div class="stat-number" id="totalProjects">0</div>
-            <div class="stat-label">مشروع</div>
+            <div class="stat-label">مشروع نشط</div>
         </div>
         <div class="stat-card">
             <div class="stat-number" id="totalCategories">0</div>
@@ -925,7 +957,7 @@
         </div>
         <div class="stat-card">
             <div class="stat-number" id="totalStudents">0</div>
-            <div class="stat-label">طلاب مشاركة</div>
+            <div class="stat-label">طالب مشارك</div>
         </div>
     </div>
 
@@ -949,13 +981,13 @@
     </div>
 
     <!-- Mega Footer -->
-    <footer class="mega-footer">
+    <footer class="mega-footer reveal">
         <div class="footer-content">
             <div class="footer-logo">Medical Sharks</div>
             <p class="footer-desc">مبادرة طلابية تهدف إلى بناء مجتمع داعم للمواهب والمشاريع التجارية لطلاب كلية الطب بجامعة طنطا.</p>
             <a href="https://forms.gle/AfWX4H6XoUfS6ZBF6" target="_blank" class="btn btn-primary" style="margin-bottom: 40px; padding: 10px 30px; font-size: 1rem;">انضم إلى المنصة الآن</a>
             <div class="footer-bottom">
-                <p>تم التصميم والتطوير بواسطة <span style="color:var(--primary); font-weight:700;">اتحاد طلاب طب طنطا</span> </p>
+                <p>Powered By <span style="color:var(--primary); font-weight:700;">اتحاد طلاب طب طنطا</span> </p>
             </div>
         </div>
     </footer>
@@ -1011,19 +1043,6 @@
         <img id="lightboxImg" class="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
     </div>
 
-    <!-- ==========================================
-         تم نقل جميع العناصر الخلفية والإضافية لأسفل الصفحة 
-         لضمان عدم تشويه التصميم وتجنب أي مساحات فارغة
-         ========================================== -->
-    <div class="page-progress" id="pageProgress"></div>
-    <div class="scroll-progress"><div class="scroll-progress-bar" id="scrollProgressBar"></div></div>
-    <div class="particles" id="particles"></div>
-    <div class="noise-overlay"></div>
-    <div class="toast-container" id="toastContainer"></div>
-    <button class="back-to-top" id="backToTop" aria-label="العودة لأعلى" title="العودة لأعلى">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-    </button>
-
     <script>
         const API_URL = "https://script.google.com/macros/s/AKfycbyjHBq8COpbVnFCFJrd-AD5Cu5zetjEQzOP0Do5mUhb5mNXMtUHZix4OD0uAdCpiWdL/exec";
         let allBrands = [];
@@ -1032,6 +1051,7 @@
 
         let currentSlide = 0;
         let totalSlides = 0;
+        let pageScrollPosition = 0;
 
         // ===== Toast Notification System =====
         function showToast(message, type = 'info', duration = 3000) {
@@ -1357,7 +1377,7 @@
                         <span class="brand-category">${brand.Category}</span>
                         <p class="brand-description">${brand.Description || 'لا يوجد وصف متاح.'}</p>
                         <div class="card-footer-action">
-                            <p class="students-names">المؤسسون: <strong>${brand.Students || 'طلاب الكلية'}</strong></p>
+                            <p class="students-names">المؤسسون: <strong><bdi>${brand.Students || 'طلاب الكلية'}</bdi></strong></p>
                             <span class="read-more-text">عرض التفاصيل <span class="read-more-arrow">←</span></span>
                         </div>
                     </div>
@@ -1393,7 +1413,10 @@
             const modalContent = document.querySelector('#brandModal .modal-content');
             if(modalContent) modalContent.scrollTop = 0;
 
-            document.body.style.overflow = 'hidden';
+            pageScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${pageScrollPosition}px`;
+            document.body.style.width = '100%';
 
             document.getElementById('modalCover').src = getDirectDriveLink(brand.CoverImage) || 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80';
             document.getElementById('modalLogo').src = getDirectDriveLink(brand.LogoImage) || 'https://via.placeholder.com/150/ffffff/0b5b9c?text=Logo';
@@ -1432,7 +1455,8 @@
             currentSlide = 0; totalSlides = 0;
 
             let images = [];
-            for(let i=1; i<=10; i++) {
+            // تم تعديل الكود ليدعم لحد 150 صورة براحتك بدلاً من 10 فقط
+            for(let i=1; i<=150; i++) {
                 let galImg = brand[`Gallery${i}`];
                 if(galImg && galImg.toString().trim() !== '' && galImg.toString().includes('http')) images.push(getDirectDriveLink(galImg.toString().trim()));
             }
@@ -1488,7 +1512,14 @@
         function closeModal(event, forceClose = false) {
             if (forceClose || event.target.id === 'brandModal') {
                 document.getElementById('brandModal').classList.remove('active');
-                document.body.style.overflow = 'auto';
+                
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.style.width = '';
+                
+                document.documentElement.style.scrollBehavior = 'auto';
+                window.scrollTo(0, pageScrollPosition);
+                document.documentElement.style.scrollBehavior = '';
             }
         }
 
