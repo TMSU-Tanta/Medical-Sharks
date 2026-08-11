@@ -92,27 +92,27 @@
             transition: background 0.5s ease, color 0.5s ease;
         }
 
-        /* Fix: visual particles must not take up document space */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .particle {
-            position: absolute;
-        }
-
         /* Subtly Textured Background */
         .noise-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             pointer-events: none; z-index: 9999;
             background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');
             opacity: 0.03;
+        }
+
+        /* ===== Floating Particles: keep decorative elements out of document flow ===== */
+        .particles {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
         }
 
         /* ===== Navbar ===== */
@@ -987,7 +987,7 @@
             <p class="footer-desc">مبادرة طلابية تهدف إلى بناء مجتمع داعم للمواهب والمشاريع التجارية لطلاب كلية الطب بجامعة طنطا.</p>
             <a href="https://forms.gle/AfWX4H6XoUfS6ZBF6" target="_blank" class="btn btn-primary" style="margin-bottom: 40px; padding: 10px 30px; font-size: 1rem;">انضم إلى المنصة الآن</a>
             <div class="footer-bottom">
-                <p>تم التصميم والتطوير بواسطة<span style="color:var(--primary); font-weight:700;">اتحاد طلاب طب طنطا</span> </p>
+                <p>تم التصميم والتطوير بواسطة <span style="color:var(--primary); font-weight:700;">اتحاد طلاب طب طنطا</span> </p>
             </div>
         </div>
     </footer>
