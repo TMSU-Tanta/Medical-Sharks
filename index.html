@@ -19,12 +19,11 @@
     <meta name="apple-mobile-web-app-title" content="Medical Sharks">
     <link rel="manifest" href="manifest.json">
 
-    <!-- أكواد المشاركة على الواتساب وفيسبوك (Open Graph) -->
+    <!-- أكواد المشاركة (Open Graph) عشان اللوجو يظهر في الواتساب والفيسبوك -->
     <meta property="og:title" content="Medical Sharks | المنصة الرسمية لمشاريع طب طنطا">
     <meta property="og:description" content="المنصة الرسمية لريادة الأعمال بطلاب كلية الطب - جامعة طنطا. نسلط الضوء على العلامات التجارية والمبادرات الواعدة التي يقودها أطباء المستقبل">
     <meta property="og:type" content="website">
-    <!-- الصورة اللي هتظهر في الواتساب (حالياً محطوطة لوجو الكلية، تقدر تغير الرابط) -->
-    <meta property="og:image" content="https://lh3.googleusercontent.com/d/18ntxbXg3NmvBSwBPnuCHIRkaUzS_gYtu">
+    <meta property="og:image" content="https://lh3.googleusercontent.com/d/18ntxbXg3NmvBSwBPnuCHIRkaUzS_gYtu"> <!-- لوجو الكلية -->
 
     <!-- إضافة أيقونة التاب (Favicon) لمنع المتصفح من التحميل المستمر -->
 
@@ -508,7 +507,7 @@
         }
         .discount-box:hover span { color: var(--btn-text); }
 
-        /* Social Links - Enhanced */
+        /* Social Links - Enhanced with new buttons */
         .modal-social-links {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px; margin-top: 25px;
@@ -530,6 +529,9 @@
         .fb-btn { background: linear-gradient(135deg, #1877F2 0%, #0c5dbf 100%); }
         .ig-btn { background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
         .wa-btn { background: linear-gradient(135deg, #25D366 0%, #1ea952 100%); }
+        .tiktok-btn { background: linear-gradient(135deg, #000000 0%, #333333 100%); }
+        .web-btn { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); }
+        .wagroup-btn { background: linear-gradient(135deg, #128C7E 0%, #075E54 100%); }
 
         .share-btn {
             width: 100%; margin-top: 20px;
@@ -936,7 +938,6 @@
         <div class="hero-content" id="heroContent">
             <h1 class="hero-main-title">مرحباً بكم في <br> <bdi>Medical Sharks</bdi> 🦈🩺</h1>
             <h2 class="hero-subtitle">المنصة الرسمية لريادة الأعمال بطلاب كلية الطب - جامعة طنطا</h2>
-            <div class="supervision-badge">✨ تحت إشراف اتحاد طلاب طب طنطا ✨</div>
             <p class="hero-desc">
                 نُسلط الضوء على العلامات التجارية والمبادرات الواعدة التي يقودها أطباء المستقبل لنصنع بيئة متكاملة تُعزز التواصل وتدعم الفكر الريادي وتحول الأفكار الطبية والإبداعية إلى مشاريع ناجحة داخل الحرم الجامعي وخارجه.
             </p>
@@ -1449,6 +1450,9 @@
             if (brand.Facebook) socialHTML += `<a href="${brand.Facebook}" target="_blank" class="social-link-item fb-btn">فيسبوك</a>`;
             if (brand.Instagram) socialHTML += `<a href="${brand.Instagram}" target="_blank" class="social-link-item ig-btn">إنستجرام</a>`;
             if (brand.WhatsApp) socialHTML += `<a href="https://wa.me/${brand.WhatsApp}" target="_blank" class="social-link-item wa-btn">واتساب</a>`;
+            if (brand.WhatsAppGroup) socialHTML += `<a href="${brand.WhatsAppGroup}" target="_blank" class="social-link-item wagroup-btn">جروب الواتساب</a>`;
+            if (brand.TikTok) socialHTML += `<a href="${brand.TikTok}" target="_blank" class="social-link-item tiktok-btn">تيك توك</a>`;
+            if (brand.Website) socialHTML += `<a href="${brand.Website}" target="_blank" class="social-link-item web-btn">الموقع الرسمي</a>`;
             
             const socialContainer = document.getElementById('modalSocial');
             socialContainer.innerHTML = socialHTML || '<p style="color:var(--text-muted);">لا توجد قنوات تواصل مسجلة حالياً.</p>';
@@ -1461,7 +1465,6 @@
             currentSlide = 0; totalSlides = 0;
 
             let images = [];
-            // تم تعديل الكود ليدعم لحد 150 صورة براحتك بدلاً من 10 فقط
             for(let i=1; i<=150; i++) {
                 let galImg = brand[`Gallery${i}`];
                 if(galImg && galImg.toString().trim() !== '' && galImg.toString().includes('http')) images.push(getDirectDriveLink(galImg.toString().trim()));
