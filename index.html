@@ -507,7 +507,7 @@
         }
         .discount-box:hover span { color: var(--btn-text); }
 
-        /* Social Links - Enhanced with new buttons */
+        /* Social Links - Enhanced with new buttons (TikTok, Web, Groups, Feedbacks) */
         .modal-social-links {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px; margin-top: 25px;
@@ -532,6 +532,7 @@
         .tiktok-btn { background: linear-gradient(135deg, #000000 0%, #333333 100%); }
         .web-btn { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); }
         .wagroup-btn { background: linear-gradient(135deg, #128C7E 0%, #075E54 100%); }
+        .feedback-btn { background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%); color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
 
         .share-btn {
             width: 100%; margin-top: 20px;
@@ -1453,6 +1454,7 @@
             if (brand.WhatsAppGroup) socialHTML += `<a href="${brand.WhatsAppGroup}" target="_blank" class="social-link-item wagroup-btn">جروب الواتساب</a>`;
             if (brand.TikTok) socialHTML += `<a href="${brand.TikTok}" target="_blank" class="social-link-item tiktok-btn">تيك توك</a>`;
             if (brand.Website) socialHTML += `<a href="${brand.Website}" target="_blank" class="social-link-item web-btn">الموقع الرسمي</a>`;
+            if (brand.Feedbacks) socialHTML += `<a href="${brand.Feedbacks}" target="_blank" class="social-link-item feedback-btn">⭐ آراء العملاء</a>`;
             
             const socialContainer = document.getElementById('modalSocial');
             socialContainer.innerHTML = socialHTML || '<p style="color:var(--text-muted);">لا توجد قنوات تواصل مسجلة حالياً.</p>';
